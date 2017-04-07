@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - LightShard
+  - Light
+  - Walkable
+  - End
   layers:
   - Default
   - TransparentFX
@@ -13,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Ground
   - 
   - 
   - 
@@ -40,4 +44,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1195682505
+    locked: 0
+  - name: Tile
+    uniqueID: 1291317163
+    locked: 0
+  - name: Items
+    uniqueID: 3491871575
+    locked: 0
+  - name: Player
+    uniqueID: 2123204545
     locked: 0
