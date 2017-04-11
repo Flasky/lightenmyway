@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class LightOnGround : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private Light smallLight;
+    private Light largeLight;
+
+
+    void Start () {
+		smallLight = this.gameObject.transform.GetChild(0).Find("Smaller").gameObject.GetComponent<Light>();
+        largeLight = this.gameObject.transform.GetChild(0).Find("Larger").gameObject.GetComponent<Light>();
+	    StartCoroutine(DieOutCoroutine());
+    }
 	
-	// Update is called once per frame
-	void Update () {
+    IEnumerator DieOutCoroutine() {
+        float stepTime = 0.015f;
+        float duration = 3f;
+        for (float time = 0f; time < duration; time += stepTime) {
+            smallLight.intensity = smallLight.intensity - (smallLight.intensity - 0f) * time/100f;
+            largeLight.intensity = largeLight.intensity - (largeLight.intensity - 0f) * time/100f;
+            yield return new WaitForSeconds(stepTime);
+        }
+        Destroy(this.gameObject);
+    }
 		
-	}
 }

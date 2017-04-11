@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
 
     private Rigidbody2D rb;
     private LevelController levelController;
+    private float speed;
 
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour {
         sanity = maxSanity;
 
         transform.position = GameObject.Find("Start").gameObject.transform.position + new Vector3(0f, 0.4f, 0f);
+        speed = maxSpeed;
 	}
 	
 	void Update() {
@@ -32,8 +34,8 @@ public class Player : MonoBehaviour {
     }
 
 	void FixedUpdate () {
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, rb.velocity.y);
-        rb.velocity = new Vector2(rb.velocity.x, Input.GetAxis("Vertical") * maxSpeed);
+        //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed);
 	}
 
     void OnTriggerEnter2D (Collider2D collider) {
@@ -49,17 +51,20 @@ public class Player : MonoBehaviour {
     IEnumerator LightsOutCoroutine() {
         yield return new WaitForSeconds(0.2f);
         isLit = false;
+        speed = maxSpeed/2f;
     }
 
     void OnTriggerStay2D(Collider2D collider) {
         if (collider.gameObject.tag == "Light") {
             isLit = true;
+            speed = maxSpeed;
         }
     }
 
     void OnTriggerExit2D (Collider2D collider) {
         if (collider.gameObject.tag == "Light") {
             isLit = false;
+            speed = maxSpeed / 2f;
         }
     }
 

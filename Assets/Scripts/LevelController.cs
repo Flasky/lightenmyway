@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class LevelController : MonoBehaviour {
 
     public int levelNo;
+    public bool isFinale = false;
     public int lightShardCount;
     public int maxLightCount;
     public GameObject lightOnGround;
@@ -26,7 +27,6 @@ public class LevelController : MonoBehaviour {
         Time.timeScale = 1f;
 
         winCanvas.SetActive(false);
-        pauseCanvas.SetActive(false);
     }
 
     void Update() {
@@ -35,12 +35,13 @@ public class LevelController : MonoBehaviour {
         if (placingLight) {
             if (Input.GetMouseButtonDown(0)) {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, LayerMask.GetMask("Ground"));
+                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, LayerMask.GetMask("Ground", "Tile"));
 
                 if (hit.collider != null) {
                     if (lightShardCount > 0) {
                         Instantiate(lightOnGround, new Vector3(hit.point.x, hit.point.y, 0f), new Quaternion());
                         lightShardCount -= 1;
+                        UpdateLightCountText();
                     }
                 }
             }
@@ -75,7 +76,11 @@ public class LevelController : MonoBehaviour {
     }
 
     public void NextLevel() {
-        SceneManager.LoadScene("Level" + (levelNo + 1));
+        if (!isFinale) {
+            SceneManager.LoadScene("Level" + (levelNo + 1));
+        } else {
+            SceneManager.LoadScene("Level" + levelNo);
+        }
     }
 
     public void Replay() {
