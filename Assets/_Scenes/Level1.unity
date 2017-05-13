@@ -580,21 +580,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114469557066460704, guid: ccb337c24d95e454382514350251b0d9,
-        type: 2}
-      propertyPath: sanityDropSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114469557066460704, guid: ccb337c24d95e454382514350251b0d9,
-        type: 2}
-      propertyPath: sanity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114469557066460704, guid: ccb337c24d95e454382514350251b0d9,
-        type: 2}
-      propertyPath: maxSanity
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ccb337c24d95e454382514350251b0d9, type: 2}
   m_IsPrefabParent: 0

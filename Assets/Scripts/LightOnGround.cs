@@ -16,10 +16,10 @@ public class LightOnGround : MonoBehaviour {
 	
     IEnumerator DieOutCoroutine() {
         float stepTime = 0.015f;
-        float duration = 3f;
+        float duration = 5f;
         for (float time = 0f; time < duration; time += stepTime) {
-            smallLight.intensity = smallLight.intensity - (smallLight.intensity - 0f) * time/100f;
-            largeLight.intensity = largeLight.intensity - (largeLight.intensity - 0f) * time/100f;
+            smallLight.intensity = smallLight.intensity - (smallLight.intensity - 0f) * time/200f;
+            largeLight.intensity = largeLight.intensity - (largeLight.intensity - 0f) * time/200f;
             yield return new WaitForSeconds(stepTime);
         }
         Destroy(this.gameObject);

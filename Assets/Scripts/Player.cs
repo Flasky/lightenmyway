@@ -50,8 +50,7 @@ public class Player : MonoBehaviour {
     // fix a weird bug, when you pick up a light shard but still stay lit
     IEnumerator LightsOutCoroutine() {
         yield return new WaitForSeconds(0.2f);
-        isLit = false;
-        speed = maxSpeed/2f;
+        LightsOut();
     }
 
     void OnTriggerStay2D(Collider2D collider) {
@@ -63,9 +62,13 @@ public class Player : MonoBehaviour {
 
     void OnTriggerExit2D (Collider2D collider) {
         if (collider.gameObject.tag == "Light") {
-            isLit = false;
-            speed = maxSpeed / 2f;
+            LightsOut();
         }
+    }
+
+    public void LightsOut() {
+        isLit = false;
+        speed = maxSpeed / 3f;
     }
 
     public float GetSanityInPercentage() {

@@ -113,7 +113,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1817559893291534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.66, y: 0.34, z: 0}
+  m_LocalPosition: {x: -5.84, y: 0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4165693207050070}
@@ -253,8 +253,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0036075604, y: -0.90580976}
-  m_Size: {x: 0.65031165, y: 0.18838122}
+  m_Offset: {x: -0.0036075339, y: -0.6838611}
+  m_Size: {x: 0.6503117, y: 0.6322785}
   m_Direction: 1
 --- !u!108 &108112122597548154
 Light:
@@ -339,7 +339,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f706ec1f3a2e4488cab9a6ed129716a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 6
+  maxSpeed: 3
+  maxSanity: 5
+  sanity: 1
+  sanityDropSpeed: 0.5
+  isLit: 0
 --- !u!212 &212635460312485406
 SpriteRenderer:
   m_ObjectHideFlags: 1
