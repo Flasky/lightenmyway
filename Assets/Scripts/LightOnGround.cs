@@ -24,5 +24,4 @@ public class LightOnGround : MonoBehaviour {
         }
         Destroy(this.gameObject);
     }
-		
 }

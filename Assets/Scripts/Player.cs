@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour {
 
@@ -11,12 +12,16 @@ public class Player : MonoBehaviour {
     public float sanity;
     [Tooltip("How many sanity lost per second")]
     public float sanityDropSpeed;
+    public float sanityGainSpeed;
 
     public bool isLit = false;
 
     private Rigidbody2D rb;
     private LevelController levelController;
+    private HUDManager hudManager;
     private float speed;
+
+    private int lightShardCount;
 
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
@@ -25,17 +30,23 @@ public class Player : MonoBehaviour {
 
         transform.position = GameObject.Find("Start").gameObject.transform.position + new Vector3(0f, 0.4f, 0f);
         speed = maxSpeed;
+
+        lightShardCount = 0;
+
+        hudManager = GameObject.Find("HUD Canvas").GetComponent<HUDManager>();
 	}
 	
 	void Update() {
-        if (!isLit) {
+        if (isLit) {
+            sanity += sanityGainSpeed * Time.deltaTime;
+        } else {
             sanity -= sanityDropSpeed * Time.deltaTime;
         }
     }
 
 	void FixedUpdate () {
         //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, rb.velocity.y);
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed);
+        rb.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * speed, CrossPlatformInputManager.GetAxis("Vertical") * speed);
 	}
 
     void OnTriggerEnter2D (Collider2D collider) {
@@ -76,7 +87,17 @@ public class Player : MonoBehaviour {
     }
 
     public void PickUpLightShard (int count) {
-        levelController.AddLightShard(count);
+        lightShardCount += count;
+        hudManager.UpdateLightCountText(lightShardCount);
+    }
+
+    public bool HasLightShard() {
+        return lightShardCount > 0;
+    }
+
+    public void UseLightShard() {
+        lightShardCount -= 1;
+        hudManager.UpdateLightCountText(lightShardCount);
     }
 
 }

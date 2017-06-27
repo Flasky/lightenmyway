@@ -343,6 +343,7 @@ MonoBehaviour:
   maxSanity: 5
   sanity: 1
   sanityDropSpeed: 0.5
+  sanityGainSpeed: 0.2
   isLit: 0
 --- !u!212 &212635460312485406
 SpriteRenderer:
