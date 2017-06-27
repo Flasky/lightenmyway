@@ -12,6 +12,7 @@ public class HUDManager : MonoBehaviour {
 
     public GameObject crystal;
     public Text crystalCountText;
+    public GameObject crystalIcon;
 
     public GameObject crystalFlower;
 
@@ -76,6 +77,13 @@ public class HUDManager : MonoBehaviour {
 
 
     public void UpdateLightCountText(int lightCount) {
-        crystalCountText.text = lightCount.ToString();
+        if (lightCount == 0) {
+            crystalIcon.SetActive(false);
+            crystalCountText.text = "";
+        } else {
+            crystalIcon.SetActive(true);
+            crystalCountText.text = lightCount.ToString();
+        }
+
     }
 }

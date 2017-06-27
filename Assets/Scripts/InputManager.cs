@@ -78,7 +78,7 @@ public class InputManager : MonoBehaviour {
     }
 
     private IEnumerator GoBackCoroutine() {
-        while ((movingLight.transform.position - originalPosition).magnitude > 0.1f) {
+        while ((movingLight.transform.position - originalPosition).magnitude > 0.5f) {
             Vector3 movingDirection = (originalPosition - movingLight.transform.position).normalized;
             float moveSpeed = 1f;
             movingLight.transform.Translate(movingDirection * moveSpeed);
