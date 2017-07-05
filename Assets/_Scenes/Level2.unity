@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chapterNo: 0
-  levelNo: 1
+  levelNo: 2
   isFinale: 0
   lightShardCount: 0
   maxLightCount: 2

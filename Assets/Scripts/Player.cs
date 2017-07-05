@@ -15,8 +15,9 @@ public class Player : MonoBehaviour {
     public float sanityGainSpeed;
 
     public bool isLit = false;
+    public bool receiveInput = true;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private LevelController levelController;
     private HUDManager hudManager;
     private float speed;
@@ -39,6 +40,9 @@ public class Player : MonoBehaviour {
 	void Update() {
         if (isLit) {
             sanity += sanityGainSpeed * Time.deltaTime;
+            if (sanity > maxSanity) {
+                sanity = maxSanity;
+            }
         } else {
             sanity -= sanityDropSpeed * Time.deltaTime;
         }
@@ -46,7 +50,9 @@ public class Player : MonoBehaviour {
 
 	void FixedUpdate () {
         //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, rb.velocity.y);
-        rb.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * speed, CrossPlatformInputManager.GetAxis("Vertical") * speed);
+        if (receiveInput) {
+            rb.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * speed, CrossPlatformInputManager.GetAxis("Vertical") * speed);
+        }
 	}
 
     void OnTriggerEnter2D (Collider2D collider) {
