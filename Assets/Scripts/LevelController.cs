@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour {
 
+    public int chapterNo;
     public int levelNo;
+    public bool isFinale = false;
     public int lightShardCount;
     public int maxLightCount;
     public GameObject lightOnGround;
@@ -13,8 +15,6 @@ public class LevelController : MonoBehaviour {
     private bool placingLight = false;
 
     #region UI variables
-    public Text lightCountText;
-    public Slider sanitySlider;
     public GameObject winCanvas;
     public GameObject pauseCanvas;
     #endregion
@@ -22,25 +22,24 @@ public class LevelController : MonoBehaviour {
     void Awake() {
         player = GameObject.Find("Player").GetComponent<Player>();
         lightShardCount = 0;
-        UpdateLightCountText();
         Time.timeScale = 1f;
 
         winCanvas.SetActive(false);
-        pauseCanvas.SetActive(false);
     }
 
     void Update() {
-        sanitySlider.value = player.GetSanityInPercentage();
+
 
         if (placingLight) {
             if (Input.GetMouseButtonDown(0)) {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, LayerMask.GetMask("Ground"));
+                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, LayerMask.GetMask("Ground", "Tile"));
 
                 if (hit.collider != null) {
                     if (lightShardCount > 0) {
                         Instantiate(lightOnGround, new Vector3(hit.point.x, hit.point.y, 0f), new Quaternion());
                         lightShardCount -= 1;
+                        // UpdateLightCountText();
                     }
                 }
             }
@@ -49,14 +48,6 @@ public class LevelController : MonoBehaviour {
 
     public void TogglePlacingLight() {
         placingLight = !placingLight;
-    }
-
-	public void AddLightShard (int count) {
-        lightShardCount += count;
-        if (lightShardCount > maxLightCount) {
-            lightShardCount = maxLightCount;
-        }
-        UpdateLightCountText();
     }
 
     public void Pause() {
@@ -75,14 +66,14 @@ public class LevelController : MonoBehaviour {
     }
 
     public void NextLevel() {
-        SceneManager.LoadScene("Level" + (levelNo + 1));
+        if (!isFinale) {
+            SceneManager.LoadScene("Level" + (levelNo + 1));
+        } else {
+            SceneManager.LoadScene("Level" + levelNo);
+        }
     }
 
     public void Replay() {
         SceneManager.LoadScene("Level" + levelNo);
-    }
-
-    void UpdateLightCountText() {
-        lightCountText.text = lightShardCount.ToString();
     }
 }

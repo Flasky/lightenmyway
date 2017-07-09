@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour {
 
@@ -11,29 +12,47 @@ public class Player : MonoBehaviour {
     public float sanity;
     [Tooltip("How many sanity lost per second")]
     public float sanityDropSpeed;
+    public float sanityGainSpeed;
 
     public bool isLit = false;
+    public bool receiveInput = true;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private LevelController levelController;
+    private HUDManager hudManager;
+    private float speed;
 
-	void Start () {
+    private int lightShardCount;
+
+	void Awake () {
 		rb = GetComponent<Rigidbody2D>();
         levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
         sanity = maxSanity;
 
         transform.position = GameObject.Find("Start").gameObject.transform.position + new Vector3(0f, 0.4f, 0f);
+        speed = maxSpeed;
+
+        lightShardCount = 0;
+
+        hudManager = GameObject.Find("HUD Canvas").GetComponent<HUDManager>();
 	}
 	
 	void Update() {
-        if (!isLit) {
+        if (isLit) {
+            sanity += sanityGainSpeed * Time.deltaTime;
+            if (sanity > maxSanity) {
+                sanity = maxSanity;
+            }
+        } else {
             sanity -= sanityDropSpeed * Time.deltaTime;
         }
     }
 
 	void FixedUpdate () {
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, rb.velocity.y);
-        rb.velocity = new Vector2(rb.velocity.x, Input.GetAxis("Vertical") * maxSpeed);
+        //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, rb.velocity.y);
+        if (receiveInput) {
+            rb.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * speed, CrossPlatformInputManager.GetAxis("Vertical") * speed);
+        }
 	}
 
     void OnTriggerEnter2D (Collider2D collider) {
@@ -48,19 +67,25 @@ public class Player : MonoBehaviour {
     // fix a weird bug, when you pick up a light shard but still stay lit
     IEnumerator LightsOutCoroutine() {
         yield return new WaitForSeconds(0.2f);
-        isLit = false;
+        LightsOut();
     }
 
     void OnTriggerStay2D(Collider2D collider) {
         if (collider.gameObject.tag == "Light") {
             isLit = true;
+            speed = maxSpeed;
         }
     }
 
     void OnTriggerExit2D (Collider2D collider) {
         if (collider.gameObject.tag == "Light") {
-            isLit = false;
+            LightsOut();
         }
+    }
+
+    public void LightsOut() {
+        isLit = false;
+        speed = maxSpeed / 3f;
     }
 
     public float GetSanityInPercentage() {
@@ -68,7 +93,17 @@ public class Player : MonoBehaviour {
     }
 
     public void PickUpLightShard (int count) {
-        levelController.AddLightShard(count);
+        lightShardCount += count;
+        hudManager.UpdateLightCountText(lightShardCount);
+    }
+
+    public bool HasLightShard() {
+        return lightShardCount > 0;
+    }
+
+    public void UseLightShard() {
+        lightShardCount -= 1;
+        hudManager.UpdateLightCountText(lightShardCount);
     }
 
 }

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4552762389697394}
   - component: {fileID: 212634034517068308}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
