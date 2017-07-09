@@ -41,7 +41,6 @@ public class TutManager : MonoBehaviour{
         Debug.Log((player.transform.position.x - playerPositions[1].position.x));
         while ((player.transform.position.x - playerPositions[1].position.x) < 0f) {
             player.rb.velocity = new Vector2(player.maxSpeed, 0f);
-            Debug.Log("In player coroutine: " + Time.time);
             camera.transform.position = player.transform.position + new Vector3(0f, 0f, -10f);
             yield return new WaitForSeconds(Time.deltaTime);
         }

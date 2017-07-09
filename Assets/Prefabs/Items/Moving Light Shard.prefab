@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4841155103794714}
   - component: {fileID: 212020960197842672}
   m_Layer: 0
-  m_Name: Moving Light
+  m_Name: Moving Light Shard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

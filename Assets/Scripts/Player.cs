@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
 
     private int lightShardCount;
 
-	void Start () {
+	void Awake () {
 		rb = GetComponent<Rigidbody2D>();
         levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
         sanity = maxSanity;

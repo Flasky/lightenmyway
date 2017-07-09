@@ -14,10 +14,10 @@ PlayerSettings:
   productName: Lighten My Way
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21176471, a: 1}
+  m_SplashScreenBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 0
-  m_SplashScreenOverlayOpacity: 1
+  m_SplashScreenOverlayOpacity: 0
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 1
   m_SplashScreenDrawMode: 0
@@ -217,7 +217,7 @@ PlayerSettings:
   appleEnableAutomaticSigning: 0
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
-  androidSplashScreen: {fileID: 2800000, guid: e9e4231414b5148c18b573225db858e3, type: 3}
+  androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: 
   AndroidKeyaliasName: 
   AndroidTVCompatibility: 1

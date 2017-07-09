@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour {
     public int trackedTouchID;
 
 	private Player player;
-    private bool trackingTouch = false;
+    public bool trackingTouch = false;
     private Vector3 originalPosition;
 
     void Start() {
