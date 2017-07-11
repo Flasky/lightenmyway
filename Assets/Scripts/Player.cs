@@ -21,8 +21,12 @@ public class Player : MonoBehaviour {
     private LevelController levelController;
     private HUDManager hudManager;
     private float speed;
+    private Animator animator;
 
     private int lightShardCount;
+
+    enum PlayerAnimationState {Standing, WalkingUp, WalkingDown, WalkingSide}
+    private PlayerAnimationState playerAnimationState;
 
 	void Awake () {
 		rb = GetComponent<Rigidbody2D>();
@@ -35,8 +39,10 @@ public class Player : MonoBehaviour {
         lightShardCount = 0;
 
         hudManager = GameObject.Find("HUD Canvas").GetComponent<HUDManager>();
+        animator = GetComponent<Animator>();
+        playerAnimationState = PlayerAnimationState.Standing;
 	}
-	
+
 	void Update() {
         if (isLit) {
             sanity += sanityGainSpeed * Time.deltaTime;
@@ -46,6 +52,9 @@ public class Player : MonoBehaviour {
         } else {
             sanity -= sanityDropSpeed * Time.deltaTime;
         }
+
+        UpdateAnimationState();
+
     }
 
 	void FixedUpdate () {
@@ -80,6 +89,40 @@ public class Player : MonoBehaviour {
     void OnTriggerExit2D (Collider2D collider) {
         if (collider.gameObject.tag == "Light") {
             LightsOut();
+        }
+    }
+
+    private void UpdateAnimationState() {
+        if (rb.velocity == Vector2.zero) {
+            if (playerAnimationState != PlayerAnimationState.Standing) {
+                animator.SetTrigger("Standing");
+                playerAnimationState = PlayerAnimationState.Standing;
+            }
+            animator.speed = 1f;
+        } else if (Vector2.Angle(rb.velocity, Vector2.up) < 45f){
+            if (playerAnimationState != PlayerAnimationState.WalkingUp) {
+                animator.SetTrigger("WalkingUp");
+                playerAnimationState = PlayerAnimationState.WalkingUp;
+            }
+            animator.speed = rb.velocity.magnitude/maxSpeed;
+        } else if (Vector2.Angle(rb.velocity, Vector2.down) < 45f) {
+            if (playerAnimationState != PlayerAnimationState.WalkingDown) {
+                animator.SetTrigger("WalkingDown");
+                playerAnimationState = PlayerAnimationState.WalkingDown;
+            }
+            animator.speed = rb.velocity.magnitude/maxSpeed;
+        } else {
+            if (playerAnimationState != PlayerAnimationState.WalkingSide) {
+                animator.SetTrigger("WalkingSide");
+                playerAnimationState = PlayerAnimationState.WalkingSide;
+            }
+            animator.speed = rb.velocity.magnitude/maxSpeed;
+
+            if (Vector2.Angle(rb.velocity, Vector2.right) <= 45f) {
+                transform.localScale = new Vector3(1f, 1f, 1f);
+            } else {
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
         }
     }
 
