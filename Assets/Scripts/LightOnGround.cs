@@ -10,7 +10,8 @@ public class LightOnGround : MonoBehaviour {
 
     void Start () {
 		smallLight = this.gameObject.transform.GetChild(0).Find("Smaller").gameObject.GetComponent<Light>();
-        largeLight = this.gameObject.transform.GetChild(0).Find("Larger").gameObject.GetComponent<Light>();
+
+        largeLight = this.gameObject.transform.GetChild(0).Find("Bigger").gameObject.GetComponent<Light>();
 	    StartCoroutine(DieOutCoroutine());
     }
 	

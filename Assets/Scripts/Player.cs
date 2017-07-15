@@ -137,6 +137,7 @@ public class Player : MonoBehaviour {
 
     public void PickUpLightShard (int count) {
         lightShardCount += count;
+        sanity += 1f;
         hudManager.UpdateLightCountText(lightShardCount);
     }
 

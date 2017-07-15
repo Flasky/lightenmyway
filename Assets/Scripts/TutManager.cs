@@ -12,6 +12,8 @@ public class TutManager : MonoBehaviour{
     public GameObject start;
     public GameObject end;
     public GameObject arrow;
+    public GameObject tutPlace1;
+    public GameObject tutPlace2;
 
     private bool showingImage1 = false;
     private bool showingImage2 = false;
@@ -42,25 +44,31 @@ public class TutManager : MonoBehaviour{
         while ((player.transform.position.x - playerPositions[1].position.x) < 0f) {
             player.rb.velocity = new Vector2(player.maxSpeed, 0f);
             camera.transform.position = player.transform.position + new Vector3(0f, 0f, -10f);
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return new WaitForSeconds(Time.deltaTime/2);
         }
         player.rb.velocity = Vector2.zero;
         StartCoroutine(CameraCoroutine1());
     }
 
     IEnumerator CameraCoroutine1() {
+        float cameraFrameTime = Time.deltaTime;
+        float cameraMoveSpeed = 20f;
+
         yield return new WaitForSeconds(1f);
 
+        // move to the right
         while((camera.transform.position.x - end.transform.position.x) < 0f) {
-            camera.transform.Translate(Vector2.right * 10f * Time.deltaTime);
-            yield return new WaitForSeconds(Time.deltaTime);
+            camera.transform.Translate(Vector2.right * cameraMoveSpeed * cameraFrameTime);
+            yield return new WaitForSeconds(cameraFrameTime);
         }
 
+        // stay at the right most point, for 3 seconds
         yield return new WaitForSeconds(3f);
 
+        // move to the left
         while((camera.transform.position.x - start.transform.position.x) > 0f) {
-            camera.transform.Translate(Vector2.left * 10f * Time.deltaTime);
-            yield return new WaitForSeconds(Time.deltaTime);
+            camera.transform.Translate(Vector2.left * cameraMoveSpeed * cameraFrameTime);
+            yield return new WaitForSeconds(cameraFrameTime);
         }
 
         player.receiveInput = true;
@@ -98,6 +106,19 @@ public class TutManager : MonoBehaviour{
         tutImages.SetActive(true);
         tutImages.transform.FindChild("Image2").gameObject.SetActive(false);
         showingImage1 = true;
+    }
+
+    public void Trigger4() {
+        StartCoroutine(Trigger4Coroutine());
+    }
+
+    IEnumerator Trigger4Coroutine() {
+        tutPlace1.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        tutPlace1.SetActive(false);
+        tutPlace2.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        tutPlace2.SetActive(false);
     }
 
     public void CrossButton() {

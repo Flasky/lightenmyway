@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour {
@@ -13,16 +14,16 @@ public class HUDManager : MonoBehaviour {
     public GameObject crystal;
     public Text crystalCountText;
     public GameObject crystalIcon;
+    public GameObject movingLightSmallPrefab;
+    private Vector3 crystalIconPosition;
+    private Vector3 lightShardPosition;
 
     public GameObject crystalFlower;
 
     public GameObject scapegoatDoll;
 
     public Sprite[] sanityIcons;
-
-	void Awake() {
-
-    }
+    public Sprite[] greySanityIcons;
 
     void Start() {
         player = GameObject.Find("Player").GetComponent<Player>();
@@ -54,7 +55,7 @@ public class HUDManager : MonoBehaviour {
         }
 
         UpdateLightCountText(0);
-
+        crystalIconPosition = crystalIcon.transform.position;
     }
 
     void Update() {
@@ -62,19 +63,19 @@ public class HUDManager : MonoBehaviour {
         sanitySlider.value = sanityPercentage;
 
 		if (sanityPercentage >= 0.7f) {
-			ChangeSanityIcon(sanityIcons[0]);
+			ChangeSanityIcon(sanityIcons[0], greySanityIcons[0]);
+
         } else if (sanityPercentage >= 0.3f) {
-            ChangeSanityIcon(sanityIcons[1]);
+            ChangeSanityIcon(sanityIcons[1], greySanityIcons[1]);
         } else if (sanityPercentage >= 0) {
-            ChangeSanityIcon(sanityIcons[2]);
+            ChangeSanityIcon(sanityIcons[2], greySanityIcons[2]);
         }
     }
 
-    private void ChangeSanityIcon (Sprite newIcon) {
-		sanitySliderBackground.GetComponent<Image>().sprite = newIcon;
+    private void ChangeSanityIcon (Sprite newIcon, Sprite newBackground) {
+		sanitySliderBackground.GetComponent<Image>().sprite = newBackground;
         sanitySliderFill.GetComponent<Image>().sprite = newIcon;
     }
-
 
     public void UpdateLightCountText(int lightCount) {
         if (lightCount == 0) {
@@ -83,6 +84,61 @@ public class HUDManager : MonoBehaviour {
         } else {
             crystalIcon.SetActive(true);
             crystalCountText.text = lightCount.ToString();
+        }
+
+    }
+
+    public void PickUpLightShard(int number, Vector3 lightWorldPosition) {
+        Vector3 lightScreenPosition = Camera.main.WorldToScreenPoint(lightWorldPosition);
+        StartCoroutine(LightShardManagerCoroutine(number, lightScreenPosition));
+    }
+
+    IEnumerator LightShardManagerCoroutine(int number, Vector3 lightScreenPosition) {
+        for (int i = 0; i < number; i++) {
+            StartCoroutine(LightShardFlyToIconCoroutine(lightScreenPosition));
+            yield return new WaitForSeconds(0.21f);
+        }
+    }
+
+    IEnumerator LightShardFlyToIconCoroutine(Vector3 lightScreenPosition) {
+        Vector3 currentScreenPosition = lightScreenPosition;
+        Vector3 currentWorldPosition = Camera.main.ScreenToWorldPoint(currentScreenPosition);
+        GameObject smallMovingLight = Instantiate(movingLightSmallPrefab, new Vector3(currentWorldPosition.x, currentWorldPosition.y, 0f), new Quaternion());
+        float startTime = Time.time;
+        float duration = 0.3f;
+        float passedTime;
+
+        while ((Time.time - startTime) < duration) {
+            passedTime = Time.time - startTime;
+            currentScreenPosition = Vector2.Lerp(lightScreenPosition, crystalIconPosition, passedTime/duration);
+            currentWorldPosition = Camera.main.ScreenToWorldPoint(currentScreenPosition);
+            smallMovingLight.transform.position = new Vector3(currentWorldPosition.x, currentWorldPosition.y, 0f);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        StartCoroutine(SanityIconEnlargeCoroutine());
+        Destroy(smallMovingLight);
+
+    }
+
+    IEnumerator SanityIconEnlargeCoroutine() {
+        float startTime = Time.time;
+        float duration = 0.1f;
+        float passedTime;
+        Vector3 origintalSize = sanitySlider.GetComponent<RectTransform>().localScale;
+        Vector3 largeSize = new Vector3(1.2f, 1.2f, 1.2f);
+
+        while ((Time.time - startTime) < duration) {
+            passedTime = Time.time - startTime;
+            sanitySlider.GetComponent<RectTransform>().localScale = Vector3.Lerp(origintalSize, largeSize, passedTime/duration);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        startTime = Time.time;
+        while ((Time.time - startTime) < duration) {
+            passedTime = Time.time - startTime;
+            sanitySlider.GetComponent<RectTransform>().localScale = Vector3.Lerp(largeSize, origintalSize, passedTime/duration);
+            yield return new WaitForSeconds(Time.deltaTime);
         }
 
     }
