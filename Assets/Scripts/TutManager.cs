@@ -17,33 +17,30 @@ public class TutManager : MonoBehaviour{
 
     private bool showingImage1 = false;
     private bool showingImage2 = false;
-    private bool shouldCameraFollowPlayer = false;
+    private CameraManager cameraManager;
 
     void Start() {
         camera = Camera.main.gameObject;
+        cameraManager = camera.GetComponent<CameraManager>();
+        camera.transform.position = start.transform.position + new Vector3(0f, 0f, -10f);
+
         player = GameObject.Find("Player").GetComponent<Player>();
         player.receiveInput = false;
-        camera.transform.position = start.transform.position + new Vector3(0f, 0f, -10f);
         player.transform.position = playerPositions[0].position;
         player.GetComponent<CapsuleCollider2D>().isTrigger = true;
+
         menuBar.SetActive(false);
         joystick.SetActive(false);
         arrow.SetActive(false);
         tutImages.SetActive(false);
         StartCoroutine(PlayerWalkToStartCoroutine());
-    }
-
-    void Update () {
-        if (shouldCameraFollowPlayer) {
-            camera.transform.position = player.transform.position + new Vector3(0f, 0f, -10f);
-        }
+        cameraManager.ShouldFollowPlayer = true;
     }
 
     IEnumerator PlayerWalkToStartCoroutine() {
-        Debug.Log((player.transform.position.x - playerPositions[1].position.x));
+
         while ((player.transform.position.x - playerPositions[1].position.x) < 0f) {
             player.rb.velocity = new Vector2(player.maxSpeed, 0f);
-            camera.transform.position = player.transform.position + new Vector3(0f, 0f, -10f);
             yield return new WaitForSeconds(Time.deltaTime/2);
         }
         player.rb.velocity = Vector2.zero;
@@ -51,6 +48,7 @@ public class TutManager : MonoBehaviour{
     }
 
     IEnumerator CameraCoroutine1() {
+        cameraManager.ShouldFollowPlayer = false;
         float cameraFrameTime = Time.deltaTime;
         float cameraMoveSpeed = 20f;
 
@@ -74,7 +72,7 @@ public class TutManager : MonoBehaviour{
         player.receiveInput = true;
         player.GetComponent<CapsuleCollider2D>().isTrigger = false;
         joystick.SetActive(true);
-        shouldCameraFollowPlayer = true;
+        cameraManager.ShouldFollowPlayer = true;
         StartCoroutine(ArrowCoroutine());
     }
 

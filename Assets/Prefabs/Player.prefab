@@ -364,6 +364,8 @@ MonoBehaviour:
   sanityGainSpeed: 0.2
   isLit: 0
   receiveInput: 1
+  lightOnGround: {fileID: 1078912770173954, guid: 7abe69cd83a8e468d865b2cb7eef7343,
+    type: 2}
   rb: {fileID: 0}
 --- !u!212 &212635460312485406
 SpriteRenderer:

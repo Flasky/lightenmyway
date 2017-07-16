@@ -8,6 +8,7 @@ TagManager:
   - Light
   - Walkable
   - End
+  - Crack
   layers:
   - Default
   - TransparentFX

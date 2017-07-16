@@ -592,7 +592,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2
+  m_Text: 
 --- !u!114 &114117147169161340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -940,7 +940,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b539bd37e6158447b8e3d31c95c14eba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c9598d874cca04dbeb41bf4015bfc183, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1195,6 +1195,7 @@ MonoBehaviour:
     type: 2}
   crystalFlower: {fileID: 1684783994552778}
   scapegoatDoll: {fileID: 1272075230504318}
+  scapegoatDollIcon: {fileID: 1485127824890228}
   sanityIcons:
   - {fileID: 21300000, guid: 24d5be88026384c4abefc3eea7b4f545, type: 3}
   - {fileID: 21300000, guid: 0eac2a3c346d54e55a8be0df5ed8ae21, type: 3}

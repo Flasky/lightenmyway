@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -17,6 +16,8 @@ public class Player : MonoBehaviour {
     public bool isLit = false;
     public bool receiveInput = true;
 
+    public GameObject lightOnGround;
+
     public Rigidbody2D rb;
     private LevelController levelController;
     private HUDManager hudManager;
@@ -24,6 +25,8 @@ public class Player : MonoBehaviour {
     private Animator animator;
 
     private int lightShardCount;
+    private bool hasScapegoatDoll = false;
+    private GameObject scapeGoat;
 
     enum PlayerAnimationState {Standing, WalkingUp, WalkingDown, WalkingSide}
     private PlayerAnimationState playerAnimationState;
@@ -41,6 +44,7 @@ public class Player : MonoBehaviour {
         hudManager = GameObject.Find("HUD Canvas").GetComponent<HUDManager>();
         animator = GetComponent<Animator>();
         playerAnimationState = PlayerAnimationState.Standing;
+
 	}
 
 	void Update() {
@@ -51,6 +55,9 @@ public class Player : MonoBehaviour {
             }
         } else {
             sanity -= sanityDropSpeed * Time.deltaTime;
+            if (sanity <= 0) {
+                Die();
+            }
         }
 
         UpdateAnimationState();
@@ -89,6 +96,10 @@ public class Player : MonoBehaviour {
     void OnTriggerExit2D (Collider2D collider) {
         if (collider.gameObject.tag == "Light") {
             LightsOut();
+        }
+
+        if (collider.gameObject.tag == "Crack") {
+            collider.gameObject.GetComponent<Crack>().EnterNextStage();
         }
     }
 
@@ -150,4 +161,47 @@ public class Player : MonoBehaviour {
         hudManager.UpdateLightCountText(lightShardCount);
     }
 
+    public void PickUpScapeGoat() {
+        hasScapegoatDoll = true;
+    }
+
+    public bool HasScapeGoat() {
+        return hasScapegoatDoll;
+    }
+
+    public void UseScapeGoat() {
+        hasScapegoatDoll = false;
+    }
+
+    public void SetScapeGoat(GameObject scapeGoat) {
+        this.scapeGoat = scapeGoat;
+    }
+
+    public void Die() {
+        if (scapeGoat != null) {
+            Revive();
+        } else {
+            levelController.Lose();
+        }
+
+    }
+
+    /*
+        Character revives.
+        A light will be placed on the ground automatically without consuming any crystal or flower.
+        If player has less than 3 crystals, player can get 2 crystals.
+        If player has more than 2 crystals, the amount of crystals won’t change.
+     */
+
+    private void Revive() {
+        this.transform.position = scapeGoat.transform.position;
+        Instantiate(lightOnGround, this.transform.position, new Quaternion());
+
+        if (lightShardCount < 3) {
+            PickUpLightShard(2);
+        }
+
+        Destroy(scapeGoat);
+        scapeGoat = null;
+    }
 }

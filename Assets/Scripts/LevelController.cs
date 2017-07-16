@@ -17,6 +17,7 @@ public class LevelController : MonoBehaviour {
     #region UI variables
     public GameObject winCanvas;
     public GameObject pauseCanvas;
+    public GameObject loseCanvas;
     #endregion
 
     void Awake() {
@@ -25,10 +26,10 @@ public class LevelController : MonoBehaviour {
         Time.timeScale = 1f;
 
         winCanvas.SetActive(false);
+        loseCanvas.SetActive(false);
     }
 
     void Update() {
-
 
         if (placingLight) {
             if (Input.GetMouseButtonDown(0)) {
@@ -62,6 +63,11 @@ public class LevelController : MonoBehaviour {
 
     public void Win() {
         winCanvas.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Lose() {
+        loseCanvas.SetActive(true);
         Time.timeScale = 0f;
     }
 

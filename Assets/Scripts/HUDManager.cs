@@ -21,6 +21,7 @@ public class HUDManager : MonoBehaviour {
     public GameObject crystalFlower;
 
     public GameObject scapegoatDoll;
+    public GameObject scapegoatDollIcon;
 
     public Sprite[] sanityIcons;
     public Sprite[] greySanityIcons;
@@ -44,7 +45,7 @@ public class HUDManager : MonoBehaviour {
                 break;
             case 2:
                 // hide unused icons
-                scapegoatDoll.SetActive(false);
+                // scapegoatDoll.SetActive(false);
                 break;
             case 3:
                 // do nothing
@@ -70,6 +71,13 @@ public class HUDManager : MonoBehaviour {
         } else if (sanityPercentage >= 0) {
             ChangeSanityIcon(sanityIcons[2], greySanityIcons[2]);
         }
+
+        if (player.HasScapeGoat()) {
+            scapegoatDollIcon.SetActive(true);
+        } else {
+            scapegoatDollIcon.SetActive(false);
+        }
+
     }
 
     private void ChangeSanityIcon (Sprite newIcon, Sprite newBackground) {
