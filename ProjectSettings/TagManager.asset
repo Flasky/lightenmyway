@@ -9,6 +9,7 @@ TagManager:
   - Walkable
   - End
   - Crack
+  - Flower
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Player
   - Ground
   - Tile
-  - 
+  - Items
   - 
   - 
   - 

@@ -788,7 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1194,6 +1194,8 @@ MonoBehaviour:
   movingLightSmallPrefab: {fileID: 1095979299872750, guid: 709d2804cf06c44b9be35dd7d3d52c97,
     type: 2}
   crystalFlower: {fileID: 1684783994552778}
+  flowerCountIcon: {fileID: 1940981796464740}
+  flowerCountText: {fileID: 114276915330061532}
   scapegoatDoll: {fileID: 1272075230504318}
   scapegoatDollIcon: {fileID: 1485127824890228}
   sanityIcons:
@@ -1516,7 +1518,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224609406094022822}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1588,7 +1590,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224609406094022822}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1624,8 +1626,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224065951240270456}
-  - {fileID: 224338861567897020}
   - {fileID: 224548207406908754}
+  - {fileID: 224338861567897020}
   m_Father: {fileID: 224631632371095844}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -7,17 +7,24 @@ public class InputManager : MonoBehaviour {
     public GameObject movingLightPrefab;
     public GameObject movingLight;
 
+    public GameObject movingFlowerPrefab;
+    public GameObject movingFlower;
+
     public GameObject movingScapegoatDollPrefab;
     public GameObject movingScapegoat;
 
     public GameObject lightOnGround;
+    public GameObject flowerOnGround;
     public GameObject scapeGoat;
+
     public int trackedTouchID;
 
 	private Player player;
     public bool trackingTouch = false;
+
     private bool placingScapegoat = false;
     private bool placingLight = false;
+    private bool placingFlower = false;
     private Vector3 originalPosition;
 
     void Start() {
@@ -40,7 +47,8 @@ public class InputManager : MonoBehaviour {
                     foreach (RaycastResult raycastResult in results){
                         Debug.Log(raycastResult.gameObject.name);
                         // start tracking touch
-                        if (raycastResult.gameObject.name == "Crystal") {
+                        // placing crystal
+                        if (raycastResult.gameObject.name == "Crystal" && player.HasLightShard()) {
                             trackedTouchID = Input.GetTouch(i).fingerId;
                             trackingTouch = true;
                             placingLight = true;
@@ -54,7 +62,8 @@ public class InputManager : MonoBehaviour {
 
                         }
 
-                        if (raycastResult.gameObject.name == "Scapegoat Doll") {
+                        // placing scape goat
+                        if (raycastResult.gameObject.name == "Scapegoat Doll" && player.HasScapeGoat()) {
                             trackedTouchID = Input.GetTouch(i).fingerId;
                             trackingTouch = true;
                             placingScapegoat = true;
@@ -65,7 +74,20 @@ public class InputManager : MonoBehaviour {
                             movingScapegoat = Instantiate(movingScapegoatDollPrefab, newPosition, new Quaternion());
                             originalPosition = newPosition;
                             break;
+                        }
 
+                        // placing flower
+                        if (raycastResult.gameObject.name == "Crystal Flower" && player.HasFlower()) {
+                            trackedTouchID = Input.GetTouch(i).fingerId;
+                            trackingTouch = true;
+                            placingFlower = true;
+                            Vector3 newPosition = new Vector3 (
+                                    Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position).x,
+                                    Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position).y,
+                                    0f);
+                            movingFlower = Instantiate(movingFlowerPrefab, newPosition, new Quaternion());
+                            originalPosition = newPosition;
+                            break;
                         }
                     }
 
@@ -78,6 +100,17 @@ public class InputManager : MonoBehaviour {
                             hit.collider.gameObject.GetComponent<CrystalStone>().DestroyCrystalStone();
                             player.UseLightShard();
                         }
+                        break;
+                    }
+                }
+
+                if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary) {
+                    // hit flower
+                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position),
+                            Vector2.up, 1000f, LayerMask.GetMask("Items"));
+
+                    if (hit.collider != null && hit.collider.gameObject.name == "Flower") {
+                        hit.collider.gameObject.GetComponent<Flower>().Press();
                         break;
                     }
                 }
@@ -94,6 +127,8 @@ public class InputManager : MonoBehaviour {
                             movingLight.transform.position = newPosition;
                         } else if (placingScapegoat) {
                             movingScapegoat.transform.position = newPosition;
+                        } else if (placingFlower) {
+                            movingFlower.transform.position = newPosition;
                         }
                     }
 
@@ -116,6 +151,13 @@ public class InputManager : MonoBehaviour {
                                     player.UseScapeGoat();
                                     trackingTouch = false;
                                 }
+                            } else if (placingFlower) {
+                                if (player.HasFlower()) {
+                                    Instantiate(flowerOnGround, new Vector3(hit.point.x, hit.point.y, 0f), new Quaternion());
+                                    Destroy(movingFlower);
+                                    player.UseFlower();
+                                    trackingTouch = false;
+                                }
                             }
                         } else { // go back
                             if (placingLight) {
@@ -124,6 +166,9 @@ public class InputManager : MonoBehaviour {
                             } else if (placingScapegoat) {
                                 StartCoroutine(GoBackCoroutine(movingScapegoat));
                                 placingScapegoat = false;
+                            } else if (placingFlower) {
+                                StartCoroutine(GoBackCoroutine(movingFlower));
+                                placingFlower = false;
                             }
                         }
                     }

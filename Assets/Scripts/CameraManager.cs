@@ -7,6 +7,7 @@ public class CameraManager : MonoBehaviour {
 
     void Start() {
         player = GameObject.Find("Player").gameObject.GetComponent<Player>();
+        ShouldFollowPlayer = true;
     }
 
     void Update() {

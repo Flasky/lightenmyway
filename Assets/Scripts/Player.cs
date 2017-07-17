@@ -25,6 +25,8 @@ public class Player : MonoBehaviour {
     private Animator animator;
 
     private int lightShardCount;
+    private int flowerCount;
+    public int MaxFlowerCount = 2;
     private bool hasScapegoatDoll = false;
     private GameObject scapeGoat;
 
@@ -40,11 +42,11 @@ public class Player : MonoBehaviour {
         speed = maxSpeed;
 
         lightShardCount = 0;
+        flowerCount = 0;
 
         hudManager = GameObject.Find("HUD Canvas").GetComponent<HUDManager>();
         animator = GetComponent<Animator>();
         playerAnimationState = PlayerAnimationState.Standing;
-
 	}
 
 	void Update() {
@@ -159,6 +161,21 @@ public class Player : MonoBehaviour {
     public void UseLightShard() {
         lightShardCount -= 1;
         hudManager.UpdateLightCountText(lightShardCount);
+    }
+
+    public void PickUpFlower(int count) {
+        flowerCount += count;
+        sanity += 1;
+        hudManager.UpdateFlowerCountText(flowerCount);
+    }
+
+    public bool HasFlower() {
+        return flowerCount > 0;
+    }
+
+    public void UseFlower() {
+        flowerCount -= 1;
+        hudManager.UpdateFlowerCountText(flowerCount);
     }
 
     public void PickUpScapeGoat() {

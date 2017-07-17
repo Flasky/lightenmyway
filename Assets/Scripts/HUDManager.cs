@@ -19,6 +19,8 @@ public class HUDManager : MonoBehaviour {
     private Vector3 lightShardPosition;
 
     public GameObject crystalFlower;
+    public GameObject flowerCountIcon;
+    public Text flowerCountText;
 
     public GameObject scapegoatDoll;
     public GameObject scapegoatDollIcon;
@@ -93,7 +95,19 @@ public class HUDManager : MonoBehaviour {
             crystalIcon.SetActive(true);
             crystalCountText.text = lightCount.ToString();
         }
+    }
 
+    public void UpdateFlowerCountText(int flowerCount) {
+        if (flowerCount == 0) {
+            flowerCountIcon.SetActive(false);
+            flowerCountText.text = "";
+        } else if (flowerCount < 2) {
+            flowerCountIcon.SetActive(true);
+            flowerCountText.text = flowerCount.ToString();
+        } else if (flowerCount == 2) {
+            flowerCountIcon.SetActive(true);
+            flowerCountText.text = "MAX";
+        }
     }
 
     public void PickUpLightShard(int number, Vector3 lightWorldPosition) {
