@@ -3232,8 +3232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c08ccfcba1df494e9e2e1cb5c945cc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chapterNo: 2
-  levelNo: 5
+  chapterNo: 1
+  levelNo: 4
   isFinale: 0
   lightShardCount: 0
   maxLightCount: 2
@@ -6957,12 +6957,12 @@ Prefab:
     - target: {fileID: 224813823178874598, guid: 1d42a414892664235a95a4c5a2966cc8,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224813823178874598, guid: 1d42a414892664235a95a4c5a2966cc8,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1d42a414892664235a95a4c5a2966cc8, type: 2}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour {
     public GameObject movingLightPrefab;
@@ -88,6 +89,10 @@ public class InputManager : MonoBehaviour {
                             movingFlower = Instantiate(movingFlowerPrefab, newPosition, new Quaternion());
                             originalPosition = newPosition;
                             break;
+                        }
+
+                        if (raycastResult.gameObject.name == "Pause Button") {
+                            GameObject.Find("LevelController").GetComponent<LevelController>().Pause();
                         }
                     }
 

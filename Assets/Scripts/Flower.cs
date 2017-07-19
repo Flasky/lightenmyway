@@ -6,7 +6,6 @@ public class Flower : MonoBehaviour {
 
 	public bool HasBeenPicked = false;
     public float HoldingTime = 2f;
-    public Sprite PickedUpSprite;
     public GameObject BigLight;
     public GameObject SmallLight;
 
@@ -44,7 +43,7 @@ public class Flower : MonoBehaviour {
     void PickUp() {
         HasBeenPicked = true;
         player.PickUpFlower(1);
-        GetComponent<SpriteRenderer>().sprite = PickedUpSprite;
+        GetComponent<Animator>().SetTrigger("PickUp");
         BigLight.SetActive(false);
         SmallLight.SetActive(true);
         Empty.SetActive(false);

@@ -47,6 +47,8 @@ public class Player : MonoBehaviour {
         hudManager = GameObject.Find("HUD Canvas").GetComponent<HUDManager>();
         animator = GetComponent<Animator>();
         playerAnimationState = PlayerAnimationState.Standing;
+
+        hudManager.UpdateFlowerCountText(flowerCount);
 	}
 
 	void Update() {
@@ -164,7 +166,9 @@ public class Player : MonoBehaviour {
     }
 
     public void PickUpFlower(int count) {
-        flowerCount += count;
+        if (flowerCount < 2) {
+            flowerCount += count;
+        }
         sanity += 1;
         hudManager.UpdateFlowerCountText(flowerCount);
     }

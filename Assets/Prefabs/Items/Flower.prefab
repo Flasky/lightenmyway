@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 212490251938281346}
   - component: {fileID: 114955008733479068}
   - component: {fileID: 61544809350546656}
+  - component: {fileID: 95266269583820298}
   m_Layer: 11
   m_Name: Flower
   m_TagString: Flower
@@ -164,7 +165,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1481900002367618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.02, y: 0, z: 0}
+  m_LocalPosition: {x: 4.53, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4856350053453118}
@@ -207,7 +208,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1935005660350926}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.087, z: 0}
+  m_LocalPosition: {x: -0.011, y: 0.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4384689820828570}
@@ -248,7 +249,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1017439522326722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.026, y: 0.664, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4997635650473846}
@@ -371,6 +372,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.51, y: 1.8600001}
   m_EdgeRadius: 0
+--- !u!95 &95266269583820298
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1481900002367618}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d0a26dd3652e1439da0a99b017903241, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!108 &108203578479866694
 Light:
   m_ObjectHideFlags: 1
@@ -528,7 +546,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasBeenPicked: 0
   HoldingTime: 2
-  PickedUpSprite: {fileID: 21300000, guid: 543b1c129d64a412a85864d92f753df1, type: 3}
   BigLight: {fileID: 1017439522326722}
   SmallLight: {fileID: 1935005660350926}
   Empty: {fileID: 1998324654600910}
@@ -645,9 +662,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -531951231
   m_SortingLayer: 5
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 07162066edacd4ee7bad54b6ed0dbe26, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 088b5e2a6b5ff4799aa24f3a786d2103, type: 3}
+  m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
