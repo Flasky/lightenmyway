@@ -48,31 +48,6 @@ public class PinchZoom : MonoBehaviour {
                     }
                     touchZero = (Touch) availableTouches[0];
                     touchOne = (Touch) availableTouches[1];
-
-//                    int trackedTouchIndex = 0;
-//                    for (int i = 0; i < Input.touchCount; i++) {
-//                        if (Input.GetTouch(i).fingerId == inputManager.trackedTouchID
-//                            || Input.GetTouch(i).fingerId == inputManager.movementTouchID) {
-//                            trackedTouchIndex = i;
-//                        }
-//                    }
-//
-//                    switch (trackedTouchIndex) {
-//                        case 0:
-//                            touchZero = Input.GetTouch(1);
-//                            touchOne = Input.GetTouch(2);
-//                            break;
-//                        case 1:
-//                            touchZero = Input.GetTouch(0);
-//                            touchOne = Input.GetTouch(2);
-//                            break;
-//                        case 2:
-//                            touchZero = Input.GetTouch(0);
-//                            touchOne = Input.GetTouch(1);
-//                            break;
-//                        default:
-//                            break;
-//                    }
                 }
             }
 
