@@ -13,6 +13,7 @@ public class CameraManager : MonoBehaviour {
     private GameObject start;
     private GameObject end;
     private bool animating = false;
+    private bool animationCanceled = false;
 
     void Start() {
         player = GameObject.Find("Player").gameObject.GetComponent<Player>();
@@ -20,7 +21,9 @@ public class CameraManager : MonoBehaviour {
         start = GameObject.Find("Start").gameObject;
         end = GameObject.Find("End").gameObject;
         ShouldFollowPlayer = true;
-        SkipText.SetActive(false);
+        if (SkipText != null) {
+            SkipText.SetActive(false);
+        }
 
         if (levelController.levelNo != 0) {
             startPosition = start.transform.position;
@@ -56,33 +59,35 @@ public class CameraManager : MonoBehaviour {
     }
 
     IEnumerator MoveToEndCoroutine() {
-        ShouldFollowPlayer = false;
+        if (!animationCanceled) {
+            ShouldFollowPlayer = false;
 
-        float cameraFrameTime = Time.deltaTime;
-        float cameraMoveSpeed = 20f;
-        Vector2 direction;
+            float cameraFrameTime = Time.deltaTime;
+            float cameraMoveSpeed = 20f;
+            Vector2 direction;
 
-        yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.3f);
 
-        // move to the end
-        direction = (end.transform.position - start.transform.position).normalized;
+            // move to the end
+            direction = (end.transform.position - start.transform.position).normalized;
 
-        while((transform.position.x - end.transform.position.x) < 0f) {
-            transform.Translate(direction * cameraMoveSpeed * cameraFrameTime);
-            yield return new WaitForSeconds(cameraFrameTime);
+            while ((transform.position.x - end.transform.position.x) < 0f) {
+                transform.Translate(direction * cameraMoveSpeed * cameraFrameTime);
+                yield return new WaitForSeconds(cameraFrameTime);
+            }
+
+            // stay at the right most point, for 3 seconds
+            yield return new WaitForSeconds(1f);
+
+            // move to the left
+            direction = (start.transform.position - end.transform.position).normalized;
+            while ((transform.position.x - start.transform.position.x) > 0f) {
+                transform.Translate(direction * cameraMoveSpeed * cameraFrameTime);
+                yield return new WaitForSeconds(cameraFrameTime);
+            }
+
+            EndAnimation();
         }
-
-        // stay at the right most point, for 3 seconds
-        yield return new WaitForSeconds(1f);
-
-        // move to the left
-        direction = (start.transform.position - end.transform.position).normalized;
-        while((transform.position.x - start.transform.position.x) > 0f) {
-            transform.Translate(direction * cameraMoveSpeed * cameraFrameTime);
-            yield return new WaitForSeconds(cameraFrameTime);
-        }
-
-        EndAnimation();
 
     }
 
@@ -97,6 +102,9 @@ public class CameraManager : MonoBehaviour {
 
     private void ManualEndAnimation() {
         player.transform.position = start.transform.position + new Vector3(0f, 0.4f, 0f);
+        StopCoroutine(PlayerToStartCoroutine());
+        StopCoroutine(MoveToEndCoroutine());
+        animationCanceled = true;
         EndAnimation();
     }
 

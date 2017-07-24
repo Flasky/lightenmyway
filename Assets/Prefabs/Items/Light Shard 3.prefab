@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4628490195851446}
   - component: {fileID: 108579147453370538}
+  - component: {fileID: 114461220257568318}
   m_Layer: 0
   m_Name: Smaller
   m_TagString: Untagged
@@ -70,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4242994666122986}
   - component: {fileID: 108836933756171652}
+  - component: {fileID: 114092634894726566}
   m_Layer: 0
   m_Name: Bigger
   m_TagString: Untagged
@@ -251,6 +253,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114092634894726566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736484749010028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c13577e2e2014681ade84f0f6863bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114303301130452238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,6 +276,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightShardCount: 3
+--- !u!114 &114461220257568318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1006922605187396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c13577e2e2014681ade84f0f6863bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212337136303129280
 SpriteRenderer:
   m_ObjectHideFlags: 1

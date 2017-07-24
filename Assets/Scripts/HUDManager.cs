@@ -6,6 +6,9 @@ public class HUDManager : MonoBehaviour {
 
 	private Player player;
     private LevelController levelController;
+    private AudioSource audioSourceForLight;
+    private AudioSource audioSourceForBeating;
+    public AudioClip[] beatingClips;
 
     public Slider sanitySlider;
     public GameObject sanitySliderBackground;
@@ -15,8 +18,10 @@ public class HUDManager : MonoBehaviour {
     public Text crystalCountText;
     public GameObject crystalIcon;
     public GameObject movingLightSmallPrefab;
+    public AudioClip crystalPickUpSound;
     private Vector3 crystalIconPosition;
     private Vector3 lightShardPosition;
+
 
     public GameObject crystalFlower;
     public GameObject flowerCountIcon;
@@ -30,6 +35,11 @@ public class HUDManager : MonoBehaviour {
 
     void Start() {
         player = GameObject.Find("Player").GetComponent<Player>();
+        audioSourceForLight = (AudioSource) GetComponents<AudioSource>()[0];
+        audioSourceForLight.loop = false;
+
+        audioSourceForBeating = (AudioSource) GetComponents<AudioSource>()[1];
+        audioSourceForBeating.loop = true;
 
         levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
 
@@ -67,11 +77,22 @@ public class HUDManager : MonoBehaviour {
 
 		if (sanityPercentage >= 0.7f) {
 			ChangeSanityIcon(sanityIcons[0], greySanityIcons[0]);
-
+            if (audioSourceForBeating.clip != beatingClips[0]) {
+                audioSourceForBeating.clip = beatingClips[0];
+                audioSourceForBeating.Play();
+            }
         } else if (sanityPercentage >= 0.3f) {
             ChangeSanityIcon(sanityIcons[1], greySanityIcons[1]);
+            if (audioSourceForBeating.clip != beatingClips[1]) {
+                audioSourceForBeating.clip = beatingClips[1];
+                audioSourceForBeating.Play();
+            }
         } else if (sanityPercentage >= 0) {
             ChangeSanityIcon(sanityIcons[2], greySanityIcons[2]);
+            if (audioSourceForBeating.clip != beatingClips[2]) {
+                audioSourceForBeating.clip = beatingClips[2];
+                audioSourceForBeating.Play();
+            }
         }
 
         if (player.HasScapeGoat()) {
@@ -137,7 +158,8 @@ public class HUDManager : MonoBehaviour {
             smallMovingLight.transform.position = new Vector3(currentWorldPosition.x, currentWorldPosition.y, 0f);
             yield return new WaitForSeconds(Time.deltaTime);
         }
-
+        audioSourceForLight.clip = crystalPickUpSound;
+        audioSourceForLight.Play();
         StartCoroutine(SanityIconEnlargeCoroutine());
         Destroy(smallMovingLight);
 

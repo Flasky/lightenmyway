@@ -24,7 +24,7 @@ public class Trigger3 : MonoBehaviour {
 
     IEnumerator ShowZoomAnimationCoroutine() {
         zoomImage.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6f);
         zoomImage.SetActive(false);
     }
 }

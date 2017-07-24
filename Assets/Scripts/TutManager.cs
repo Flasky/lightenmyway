@@ -12,8 +12,7 @@ public class TutManager : MonoBehaviour{
     public GameObject start;
     public GameObject end;
     public GameObject arrow;
-    public GameObject tutPlace1;
-    public GameObject tutPlace2;
+    public GameObject tutPlace;
 
     private bool showingImage1 = false;
     private bool showingImage2 = false;
@@ -78,19 +77,7 @@ public class TutManager : MonoBehaviour{
 
     IEnumerator ArrowCoroutine() {
         arrow.SetActive(true);
-        float startTime = Time.time;
-        float duration = 5f;
-
-        float animationStartTime = Time.time;
-        Vector2 animationDirection = Vector2.right;
-        while ((Time.time - startTime) < duration) {
-            while ((Time.time - animationStartTime) < 1f) {
-                arrow.transform.Translate(animationDirection * Time.deltaTime);
-                yield return new WaitForSeconds(Time.deltaTime);
-            }
-            animationStartTime = Time.time;
-            animationDirection *= -1f;
-        }
+        yield return new WaitForSeconds(2.9f);
         arrow.SetActive(false);
     }
 
@@ -111,12 +98,9 @@ public class TutManager : MonoBehaviour{
     }
 
     IEnumerator Trigger4Coroutine() {
-        tutPlace1.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        tutPlace1.SetActive(false);
-        tutPlace2.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        tutPlace2.SetActive(false);
+        tutPlace.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        tutPlace.SetActive(false);
     }
 
     public void CrossButton() {

@@ -13,6 +13,7 @@ public class LevelController : MonoBehaviour {
 
     private Player player;
     private bool placingLight = false;
+    private GameManager gameManager;
 
     #region UI variables
     public GameObject winCanvas;
@@ -27,6 +28,7 @@ public class LevelController : MonoBehaviour {
 
         winCanvas.SetActive(false);
         loseCanvas.SetActive(false);
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update() {
@@ -69,6 +71,10 @@ public class LevelController : MonoBehaviour {
     public void Lose() {
         loseCanvas.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    public void SelectLevel() {
+        gameManager.LoadLevel(15);
     }
 
     public void NextLevel() {

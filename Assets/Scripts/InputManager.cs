@@ -21,6 +21,10 @@ public class InputManager : MonoBehaviour {
     public bool trackingTouch = false;
     private Player player;
 
+    // sound
+    private AudioSource audioSource;
+    public AudioClip lightPutDown;
+
     // Player movement
     public float Horizontal = 0f;
     public float Vertical = 0f;
@@ -40,6 +44,9 @@ public class InputManager : MonoBehaviour {
     void Start() {
         player = GameObject.Find("Player").GetComponent<Player>();
         stick = GameObject.Find("Stick").gameObject;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.loop = false;
+
         stickOrigin = stick.transform.localPosition;
         stickMovementRadius = stickOrigin.x;
         stickAnchoredPosition = stick.transform.parent.GetComponent<RectTransform>().anchoredPosition;
@@ -123,6 +130,7 @@ public class InputManager : MonoBehaviour {
 
                         if (raycastResult.gameObject.name == "Pause Button") {
                             GameObject.Find("LevelController").GetComponent<LevelController>().Pause();
+                            GameObject.Find("Pause Button").GetComponent<AudioSource>().Play();
                         }
 
                         // start tracking touch
@@ -170,11 +178,11 @@ public class InputManager : MonoBehaviour {
                     }
                     #endregion
 
-                    // hit road block
+                    // hit crystal stone
                     RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position),
                             Vector2.up, 1000f, LayerMask.GetMask("Tile"));
 
-                    if (hit.collider != null && hit.collider.gameObject.name == "Crystal Stone") {
+                    if (hit.collider != null && hit.collider.gameObject.tag == "Crystal Stone") {
                         if (player.HasLightShard()) {
                             hit.collider.gameObject.GetComponent<CrystalStone>().DestroyCrystalStone();
                             player.UseLightShard();
@@ -186,8 +194,17 @@ public class InputManager : MonoBehaviour {
                     hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position),
                             Vector2.up, 1000f, LayerMask.GetMask("Items"));
 
-                    if (hit.collider != null && hit.collider.gameObject.name == "Flower") {
+                    if (hit.collider != null && hit.collider.gameObject.tag == "Flower") {
                         hit.collider.gameObject.GetComponent<Flower>().GetHit();
+                        break;
+                    }
+
+                    // hit Rock
+                    hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position),
+                            Vector2.up, 1000f, LayerMask.GetMask("Items"));
+
+                    if (hit.collider != null && hit.collider.gameObject.tag == "Rock") {
+                        hit.collider.gameObject.GetComponent<Rock>().GetHit();
                         break;
                     }
                 }
@@ -225,6 +242,8 @@ public class InputManager : MonoBehaviour {
                                     Instantiate(lightOnGround, new Vector3(newPosition.x, newPosition.y, 0f), new Quaternion());
                                     Destroy(movingLight);
                                     player.UseLightShard();
+                                    audioSource.clip = lightPutDown;
+                                    audioSource.Play();
                                     trackingTouch = false;
                                 }
                             } else {

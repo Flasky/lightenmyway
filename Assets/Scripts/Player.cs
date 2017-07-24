@@ -16,6 +16,12 @@ public class Player : MonoBehaviour {
     public bool isLit = false;
     public bool receiveInput = true;
 
+    //sound
+    public AudioClip[] audioClips;
+    private AudioSource audioSource;
+    private bool playingNormalSound;
+    private bool died = false;
+
     public GameObject lightOnGround;
 
     public Rigidbody2D rb;
@@ -36,8 +42,11 @@ public class Player : MonoBehaviour {
 
 	void Awake () {
 		rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+
         levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
+
         sanity = maxSanity;
 
         // transform.position = GameObject.Find("Start").gameObject.transform.position + new Vector3(0f, 0.4f, 0f);
@@ -62,8 +71,28 @@ public class Player : MonoBehaviour {
         } else {
             sanity -= sanityDropSpeed * Time.deltaTime;
             if (sanity <= 0) {
-                Die();
+                if (!died) {
+                    Die();
+                }
             }
+        }
+
+        if (rb.velocity.magnitude > 0.8f * maxSpeed) {
+            if (audioSource.clip != audioClips[0]) {
+                audioSource.clip = audioClips[0];
+                audioSource.loop = true;
+                audioSource.Play();
+            }
+            // playingNormalSound = true;
+        } else if (rb.velocity.magnitude < 0.8f * maxSpeed && rb.velocity.magnitude > 0f){
+            if (audioSource.clip != audioClips[1]) {
+                audioSource.clip = audioClips[1];
+                audioSource.loop = true;
+                audioSource.Play();
+                // playingNormalSound = false;
+            }
+        } else if (rb.velocity == Vector2.zero && !died){
+            audioSource.Stop();
         }
 
         UpdateAnimationState();
@@ -206,9 +235,19 @@ public class Player : MonoBehaviour {
         if (scapeGoat != null) {
             Revive();
         } else {
-            levelController.Lose();
+            StartCoroutine(DieCoroutine());
         }
+    }
 
+    IEnumerator DieCoroutine() {
+        receiveInput = false;
+        died = true;
+        audioSource.clip = audioClips[2];
+        audioSource.loop = false;
+        audioSource.Play();
+
+        yield return new WaitForSeconds(2f);
+        levelController.Lose();
     }
 
     /*

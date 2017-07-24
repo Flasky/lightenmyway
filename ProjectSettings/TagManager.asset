@@ -10,6 +10,8 @@ TagManager:
   - End
   - Crack
   - Flower
+  - Crystal Stone
+  - Rock
   layers:
   - Default
   - TransparentFX
