@@ -5,6 +5,8 @@ public class CameraManager : MonoBehaviour {
 
     public bool ShouldFollowPlayer;
     public GameObject Joystick;
+    public GameObject SkipText;
+
     private Player player;
     private Vector3 startPosition;
     private LevelController levelController;
@@ -17,6 +19,7 @@ public class CameraManager : MonoBehaviour {
         start = GameObject.Find("Start").gameObject;
         end = GameObject.Find("End").gameObject;
         ShouldFollowPlayer = true;
+        SkipText.SetActive(false);
 
         if (levelController.levelNo != 0) {
             startPosition = start.transform.position;
@@ -24,6 +27,7 @@ public class CameraManager : MonoBehaviour {
             player.receiveInput = false;
             player.GetComponent<CapsuleCollider2D>().isTrigger = true;
             Joystick.SetActive(false);
+            SkipText.SetActive(true);
 
             StartCoroutine(PlayerToStartCoroutine());
         }
@@ -33,11 +37,16 @@ public class CameraManager : MonoBehaviour {
         if (ShouldFollowPlayer) {
             transform.position = player.transform.position + new Vector3(0f, 0f, -10f);
         }
+
+        if (Input.touchCount >= 1) {
+            ManualEndAnimation();
+        }
     }
 
     IEnumerator PlayerToStartCoroutine() {
         while ((player.transform.position.x - startPosition.x) < 0f) {
             player.rb.velocity = new Vector2(player.maxSpeed, 0f);
+            player.sanity = player.maxSanity;
             yield return new WaitForSeconds(Time.deltaTime/2);
         }
         player.rb.velocity = Vector2.zero;
@@ -80,6 +89,12 @@ public class CameraManager : MonoBehaviour {
         player.GetComponent<CapsuleCollider2D>().isTrigger = false;
         Joystick.SetActive(true);
         ShouldFollowPlayer = true;
+        SkipText.SetActive(false);
+    }
+
+    private void ManualEndAnimation() {
+        player.transform.position = start.transform.position + new Vector3(0f, 0.4f, 0f);
+        EndAnimation();
     }
 
 	public void Shake() {

@@ -8,7 +8,7 @@ public class MapManager : MonoBehaviour {
 
 	void Start () {
 		indexToBeShown = Random.Range(0, randomLevelPieces.Length);
-        Debug.Log(indexToBeShown);
+        
         foreach (GameObject go in randomLevelPieces) {
             go.SetActive(false);
         }
