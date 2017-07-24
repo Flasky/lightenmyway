@@ -26,7 +26,7 @@ public class InputManager : MonoBehaviour {
     public float Vertical = 0f;
     public int movementTouchID;
     public bool trackingMovement = false;
-    public GameObject stick;
+    private GameObject stick;
     private Vector3 stickOrigin;
     private Vector2 stickAnchoredPosition;
     private float stickMovementRadius;
@@ -35,12 +35,16 @@ public class InputManager : MonoBehaviour {
     private bool placingLight = false;
     private bool placingFlower = false;
     private Vector3 originalPosition;
+    private float menuBarPositionX;
 
     void Start() {
         player = GameObject.Find("Player").GetComponent<Player>();
+        stick = GameObject.Find("Stick").gameObject;
         stickOrigin = stick.transform.localPosition;
         stickMovementRadius = stickOrigin.x;
         stickAnchoredPosition = stick.transform.parent.GetComponent<RectTransform>().anchoredPosition;
+        menuBarPositionX = GameObject.Find("Menu Bar").GetComponent<RectTransform>().position.x
+            - GameObject.Find("Menu Bar").GetComponent<RectTransform>().rect.width;
     }
 
     void Update() {
@@ -200,43 +204,55 @@ public class InputManager : MonoBehaviour {
                     }
 
                     if (Input.GetTouch(i).phase == TouchPhase.Ended) {
-                        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
-                        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1000f, LayerMask.GetMask("Ground", "Tile"));
 
-                        if (hit.collider != null) {
-                            if (placingLight) {
+                        Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+
+                        // the design here changed once
+                        // the original design is that: these items can only be placed on the ground or on tiles
+                        // the new design is: crystal can be placed anywhere
+                        if (placingLight) {
+                            if (Input.GetTouch(i).position.x < menuBarPositionX) {
                                 if (player.HasLightShard()) {
-                                    Instantiate(lightOnGround, new Vector3(hit.point.x, hit.point.y, 0f), new Quaternion());
+                                    Instantiate(lightOnGround, new Vector3(newPosition.x, newPosition.y, 0f), new Quaternion());
                                     Destroy(movingLight);
                                     player.UseLightShard();
                                     trackingTouch = false;
                                 }
-                            } else if (placingScapegoat) {
+                            } else {
+                                StartCoroutine(GoBackCoroutine(movingLight));
+                                placingLight = false;
+                            }
+
+                        } else if (placingFlower) {
+                            if (Input.GetTouch(i).position.x < menuBarPositionX) {
+                                if (player.HasFlower()) {
+                                    Instantiate(flowerOnGround, new Vector3(newPosition.x, newPosition.y, 0f), new Quaternion());
+                                    Destroy(movingFlower);
+                                    player.UseFlower();
+                                    trackingTouch = false;
+                                }
+                            } else {
+                                StartCoroutine(GoBackCoroutine(movingFlower));
+                                placingFlower = false;
+                            }
+                        }
+
+                        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+                        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1000f, LayerMask.GetMask("Ground", "Tile"));
+
+                        if (hit.collider != null) {
+                            if (placingScapegoat) {
                                 if (player.HasScapeGoat()) {
                                     player.SetScapeGoat(Instantiate(scapeGoat, new Vector3(hit.point.x, hit.point.y, 0f), new Quaternion()) as GameObject);
                                     Destroy(movingScapegoat);
                                     player.UseScapeGoat();
                                     trackingTouch = false;
                                 }
-                            } else if (placingFlower) {
-                                if (player.HasFlower()) {
-                                    Instantiate(flowerOnGround, new Vector3(hit.point.x, hit.point.y, 0f), new Quaternion());
-                                    Destroy(movingFlower);
-                                    player.UseFlower();
-                                    trackingTouch = false;
-                                }
                             }
                         } else { // go back
-
-                            if (placingLight) {
-                                StartCoroutine(GoBackCoroutine(movingLight));
-                                placingLight = false;
-                            } else if (placingScapegoat) {
+                            if (placingScapegoat) {
                                 StartCoroutine(GoBackCoroutine(movingScapegoat));
                                 placingScapegoat = false;
-                            } else if (placingFlower) {
-                                StartCoroutine(GoBackCoroutine(movingFlower));
-                                placingFlower = false;
                             }
                         }
                     }

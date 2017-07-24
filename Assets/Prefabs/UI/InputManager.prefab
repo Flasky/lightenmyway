@@ -67,3 +67,8 @@ MonoBehaviour:
   scapeGoat: {fileID: 1611091248470326, guid: da94bd3e359aa48a18abb72214355795, type: 2}
   trackedTouchID: 0
   trackingTouch: 0
+  Horizontal: 0
+  Vertical: 0
+  movementTouchID: 0
+  trackingMovement: 0
+  stick: {fileID: 0}

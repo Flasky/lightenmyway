@@ -40,7 +40,7 @@ public class Player : MonoBehaviour {
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         sanity = maxSanity;
 
-        transform.position = GameObject.Find("Start").gameObject.transform.position + new Vector3(0f, 0.4f, 0f);
+        // transform.position = GameObject.Find("Start").gameObject.transform.position + new Vector3(0f, 0.4f, 0f);
         speed = maxSpeed;
 
         lightShardCount = 0;

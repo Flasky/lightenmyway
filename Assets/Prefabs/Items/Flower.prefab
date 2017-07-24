@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4856350053453118}
-  - component: {fileID: 60215694545624210}
+  - component: {fileID: 60323019593978234}
   m_Layer: 0
   m_Name: Light 2
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 60415580947699704}
   m_Layer: 0
   m_Name: Light 0.5
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,7 +165,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1481900002367618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.53, y: 0, z: 0}
+  m_LocalPosition: {x: 1.51, y: -4.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4856350053453118}
@@ -182,7 +182,7 @@ Transform:
   m_GameObject: {fileID: 1998324654600910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.6, z: 1}
   m_Children:
   - {fileID: 4928263539295850}
   m_Father: {fileID: 4069777392844628}
@@ -283,7 +283,7 @@ Transform:
   m_Father: {fileID: 4856350053453118}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &60215694545624210
+--- !u!60 &60323019593978234
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -307,14 +307,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.38728, y: 0.92584693}
-      - {x: -0.92835236, y: 0.38848194}
-      - {x: -0.91699696, y: -0.41169238}
-      - {x: -0.38881016, y: -0.9274558}
-      - {x: 0.41292703, y: -0.91305685}
-      - {x: 0.93970144, y: -0.40601635}
-      - {x: 0.9368953, y: 0.3927558}
-      - {x: 0.3935182, y: 0.92221814}
+    - - {x: 0.45655897, y: 1.2193155}
+      - {x: -0.5185008, y: 1.2090728}
+      - {x: -1.3019602, y: 0.53649765}
+      - {x: -1.2932703, y: -0.48734373}
+      - {x: -0.4459016, y: -1.3519564}
+      - {x: 0.51073265, y: -1.3413124}
+      - {x: 1.1909533, y: -0.5556864}
+      - {x: 1.1923234, y: 0.4959994}
 --- !u!60 &60415580947699704
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -339,14 +339,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.38728, y: 0.92584693}
-      - {x: -0.92835236, y: 0.38848194}
-      - {x: -0.91699696, y: -0.41169238}
-      - {x: -0.38881016, y: -0.9274558}
-      - {x: 0.41292703, y: -0.91305685}
-      - {x: 0.93970144, y: -0.40601635}
-      - {x: 0.9368953, y: 0.3927558}
-      - {x: 0.3935182, y: 0.92221814}
+    - - {x: -0.32318082, y: 0.782171}
+      - {x: -0.7434905, y: 0.3527491}
+      - {x: -0.75777465, y: -0.34106612}
+      - {x: -0.34321776, y: -0.7711942}
+      - {x: 0.29936597, y: -0.7779596}
+      - {x: 0.7810851, y: -0.32007766}
+      - {x: 0.76872283, y: 0.33518386}
+      - {x: 0.38638517, y: 0.79879785}
 --- !u!61 &61544809350546656
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -664,7 +664,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 088b5e2a6b5ff4799aa24f3a786d2103, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.18977077, g: 0.5735294, b: 0.5735294, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
