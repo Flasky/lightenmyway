@@ -58,7 +58,16 @@ public class InputManager : MonoBehaviour {
                     }
 
                     if (Input.GetTouch(i).phase == TouchPhase.Moved) {
-                        stick.transform.localPosition = Input.GetTouch(i).position - stickAnchoredPosition;
+                        Vector3 targetLocalPosition = Input.GetTouch(i).position - stickAnchoredPosition;
+                        Vector3 displacementFromCenter = targetLocalPosition - stickOrigin;
+                        Debug.Log("Displacement: " + displacementFromCenter);
+
+                        if (displacementFromCenter.magnitude > stickMovementRadius) {
+                            stick.transform.localPosition = stickOrigin + stickMovementRadius * displacementFromCenter.normalized;
+                        }
+                        else {
+                            stick.transform.localPosition = targetLocalPosition;
+                        }
                         UpdateInputParameters();
                     }
 
@@ -178,7 +187,7 @@ public class InputManager : MonoBehaviour {
                             Vector2.up, 1000f, LayerMask.GetMask("Items"));
 
                     if (hit.collider != null && hit.collider.gameObject.name == "Flower") {
-                        hit.collider.gameObject.GetComponent<Flower>().Press();
+                        hit.collider.gameObject.GetComponent<Flower>().GetHit();
                         break;
                     }
                 }

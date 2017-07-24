@@ -12,6 +12,7 @@ public class CameraManager : MonoBehaviour {
     private LevelController levelController;
     private GameObject start;
     private GameObject end;
+    private bool animating = false;
 
     void Start() {
         player = GameObject.Find("Player").gameObject.GetComponent<Player>();
@@ -28,6 +29,7 @@ public class CameraManager : MonoBehaviour {
             player.GetComponent<CapsuleCollider2D>().isTrigger = true;
             Joystick.SetActive(false);
             SkipText.SetActive(true);
+            animating = true;
 
             StartCoroutine(PlayerToStartCoroutine());
         }
@@ -38,7 +40,7 @@ public class CameraManager : MonoBehaviour {
             transform.position = player.transform.position + new Vector3(0f, 0f, -10f);
         }
 
-        if (Input.touchCount >= 1) {
+        if (Input.touchCount >= 1 && animating) {
             ManualEndAnimation();
         }
     }
@@ -90,6 +92,7 @@ public class CameraManager : MonoBehaviour {
         Joystick.SetActive(true);
         ShouldFollowPlayer = true;
         SkipText.SetActive(false);
+        animating = false;
     }
 
     private void ManualEndAnimation() {

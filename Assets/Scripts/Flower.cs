@@ -13,7 +13,7 @@ public class Flower : MonoBehaviour {
     public GameObject Filled;
 
     [SerializeField]
-    private float timePressed = 0f;
+    private int timeHit = 0;
     private Player player;
 
     void Start() {
@@ -22,19 +22,30 @@ public class Flower : MonoBehaviour {
         SmallLight.SetActive(false);
     }
 
-    void Update() {
-        if (!HasBeenPicked && timePressed == 0) {
+    void LateUpdate() {
+        if (!HasBeenPicked && timeHit == 0) {
             Empty.SetActive(false);
-        } else if (!HasBeenPicked && timePressed > 0f) {
+        } else if (!HasBeenPicked && timeHit > 0) {
             Empty.SetActive(true);
-            Filled.transform.localScale = new Vector3(timePressed/2f, 1f, 1f);
+            switch (timeHit) {
+                case 1:
+                    Filled.transform.localScale = new Vector3(0.33f, 1f, 1f);
+                    Filled.transform.localPosition = new Vector3(-0.87f, 0f, 0f);
+                    break;
+                case 2:
+                    Filled.transform.localScale = new Vector3(0.67f, 1f, 1f);
+                    Filled.transform.localPosition = new Vector3(-0.43f, 0f, 0f);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
-    public void Press() {
+    public void GetHit() {
         if (!HasBeenPicked) {
-            timePressed += Time.deltaTime;
-            if (timePressed >= 2f) {
+            timeHit++;
+            if (timeHit >= 3) {
                 PickUp();
             }
         }
