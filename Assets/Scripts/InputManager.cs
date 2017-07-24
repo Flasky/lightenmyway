@@ -44,6 +44,7 @@ public class InputManager : MonoBehaviour {
     }
 
     void Update() {
+        #region tracking movement
         if (trackingMovement) {
             for (int i = 0; i < Input.touchCount; i++) {
                 if (Input.GetTouch(i).fingerId == movementTouchID) {
@@ -65,6 +66,32 @@ public class InputManager : MonoBehaviour {
                 }
             }
         }
+        #endregion
+
+        #region start tracking movement
+        if (Input.touchCount > 0 && !trackingMovement) {
+            for (int i = 0; i < Input.touchCount; i++) {
+                Touch touch = Input.GetTouch(i);
+                if (touch.phase == TouchPhase.Began) {
+
+                    List<RaycastResult> results = new List<RaycastResult>();
+                    PointerEventData pointerData = new PointerEventData(EventSystem.current);
+                    pointerData.position = Input.GetTouch(i).position;
+                    EventSystem.current.RaycastAll(pointerData, results);
+                    foreach (RaycastResult raycastResult in results) {
+                        if (raycastResult.gameObject.name == "Joystick" && !trackingMovement) {
+                            movementTouchID = Input.GetTouch(i).fingerId;
+                            trackingMovement = true;
+
+                            stick.transform.localPosition = Input.GetTouch(i).position - stickAnchoredPosition;
+                            UpdateInputParameters();
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
 
         if (Input.touchCount > 0 && !trackingTouch) {
 
@@ -78,18 +105,20 @@ public class InputManager : MonoBehaviour {
                     pointerData.position = Input.GetTouch(i).position;
                     EventSystem.current.RaycastAll(pointerData, results);
 
-                    foreach (RaycastResult raycastResult in results){
+                    #region track item placing and manual UI
+                    foreach (RaycastResult raycastResult in results) {
 
                         if (raycastResult.gameObject.name == "Pause Button") {
                             GameObject.Find("LevelController").GetComponent<LevelController>().Pause();
                         }
+
                         // start tracking touch
                         // placing crystal
                         if (raycastResult.gameObject.name == "Crystal" && player.HasLightShard()) {
                             trackedTouchID = Input.GetTouch(i).fingerId;
                             trackingTouch = true;
                             placingLight = true;
-                            Vector3 newPosition = new Vector3 (
+                            Vector3 newPosition = new Vector3(
                                     Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position).x,
                                     Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position).y,
                                     0f);
@@ -103,7 +132,7 @@ public class InputManager : MonoBehaviour {
                             trackedTouchID = Input.GetTouch(i).fingerId;
                             trackingTouch = true;
                             placingScapegoat = true;
-                            Vector3 newPosition = new Vector3 (
+                            Vector3 newPosition = new Vector3(
                                     Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position).x,
                                     Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position).y,
                                     0f);
@@ -117,7 +146,7 @@ public class InputManager : MonoBehaviour {
                             trackedTouchID = Input.GetTouch(i).fingerId;
                             trackingTouch = true;
                             placingFlower = true;
-                            Vector3 newPosition = new Vector3 (
+                            Vector3 newPosition = new Vector3(
                                     Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position).x,
                                     Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position).y,
                                     0f);
@@ -125,17 +154,8 @@ public class InputManager : MonoBehaviour {
                             originalPosition = newPosition;
                             break;
                         }
-
-                        // movement
-                        if (raycastResult.gameObject.name == "Joystick" && !trackingMovement) {
-                            movementTouchID = Input.GetTouch(i).fingerId;
-                            trackingMovement = true;
-
-                            stick.transform.localPosition = Input.GetTouch(i).position - stickAnchoredPosition;
-                            UpdateInputParameters();
-                            break;
-                        }
                     }
+                    #endregion
 
                     // hit road block
                     RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position),
@@ -148,11 +168,9 @@ public class InputManager : MonoBehaviour {
                         }
                         break;
                     }
-                }
 
-                if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary) {
                     // hit flower
-                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position),
+                    hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position),
                             Vector2.up, 1000f, LayerMask.GetMask("Items"));
 
                     if (hit.collider != null && hit.collider.gameObject.name == "Flower") {
