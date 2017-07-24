@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour {
     public GameObject movingLightPrefab;
@@ -19,9 +18,18 @@ public class InputManager : MonoBehaviour {
     public GameObject scapeGoat;
 
     public int trackedTouchID;
-
-	private Player player;
     public bool trackingTouch = false;
+    private Player player;
+
+    // Player movement
+    public float Horizontal = 0f;
+    public float Vertical = 0f;
+    public int movementTouchID;
+    public bool trackingMovement = false;
+    public GameObject stick;
+    private Vector3 stickOrigin;
+    private Vector2 stickAnchoredPosition;
+    private float stickMovementRadius;
 
     private bool placingScapegoat = false;
     private bool placingLight = false;
@@ -30,12 +38,37 @@ public class InputManager : MonoBehaviour {
 
     void Start() {
         player = GameObject.Find("Player").GetComponent<Player>();
-
+        stickOrigin = stick.transform.localPosition;
+        stickMovementRadius = stickOrigin.x;
+        stickAnchoredPosition = stick.transform.parent.GetComponent<RectTransform>().anchoredPosition;
     }
 
     void Update() {
+        if (trackingMovement) {
+            for (int i = 0; i < Input.touchCount; i++) {
+                if (Input.GetTouch(i).fingerId == movementTouchID) {
+                    Debug.Log("tracking movement");
+                    if (Input.GetTouch(i).phase == TouchPhase.Stationary) {
+                        UpdateInputParameters();
+                    }
+
+                    if (Input.GetTouch(i).phase == TouchPhase.Moved) {
+                        stick.transform.localPosition = Input.GetTouch(i).position - stickAnchoredPosition;
+                        UpdateInputParameters();
+                    }
+
+                    if (Input.GetTouch(i).phase == TouchPhase.Ended) {
+                        trackingMovement = false;
+                        stick.transform.localPosition = stickOrigin;
+                        UpdateInputParameters();
+                    }
+                }
+            }
+        }
+
         if (Input.touchCount > 0 && !trackingTouch) {
 
+            // in this loop, find a touch to track
             for (int i = 0; i < Input.touchCount; i++) {
                 Touch touch = Input.GetTouch(i);
                 if (touch.phase == TouchPhase.Began) {
@@ -46,7 +79,10 @@ public class InputManager : MonoBehaviour {
                     EventSystem.current.RaycastAll(pointerData, results);
 
                     foreach (RaycastResult raycastResult in results){
-                        Debug.Log(raycastResult.gameObject.name);
+
+                        if (raycastResult.gameObject.name == "Pause Button") {
+                            GameObject.Find("LevelController").GetComponent<LevelController>().Pause();
+                        }
                         // start tracking touch
                         // placing crystal
                         if (raycastResult.gameObject.name == "Crystal" && player.HasLightShard()) {
@@ -60,7 +96,6 @@ public class InputManager : MonoBehaviour {
                             movingLight = Instantiate(movingLightPrefab, newPosition, new Quaternion());
                             originalPosition = newPosition;
                             break;
-
                         }
 
                         // placing scape goat
@@ -91,8 +126,14 @@ public class InputManager : MonoBehaviour {
                             break;
                         }
 
-                        if (raycastResult.gameObject.name == "Pause Button") {
-                            GameObject.Find("LevelController").GetComponent<LevelController>().Pause();
+                        // movement
+                        if (raycastResult.gameObject.name == "Joystick" && !trackingMovement) {
+                            movementTouchID = Input.GetTouch(i).fingerId;
+                            trackingMovement = true;
+
+                            stick.transform.localPosition = Input.GetTouch(i).position - stickAnchoredPosition;
+                            UpdateInputParameters();
+                            break;
                         }
                     }
 
@@ -121,7 +162,10 @@ public class InputManager : MonoBehaviour {
                 }
             }
         } else {
+
+            // in this loop, we are tracking a touch
             for (int i = 0; i < Input.touchCount; i++) {
+                #region track item placement
                 if (Input.GetTouch(i).fingerId == trackedTouchID) {
                     if (Input.GetTouch(i).phase == TouchPhase.Moved) {
                         Vector3 newPosition = new Vector3 (
@@ -138,8 +182,8 @@ public class InputManager : MonoBehaviour {
                     }
 
                     if (Input.GetTouch(i).phase == TouchPhase.Ended) {
-                        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 100f, LayerMask.GetMask("Ground", "Tile"));
+                        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(i).position);
+                        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1000f, LayerMask.GetMask("Ground", "Tile"));
 
                         if (hit.collider != null) {
                             if (placingLight) {
@@ -165,6 +209,7 @@ public class InputManager : MonoBehaviour {
                                 }
                             }
                         } else { // go back
+
                             if (placingLight) {
                                 StartCoroutine(GoBackCoroutine(movingLight));
                                 placingLight = false;
@@ -178,6 +223,7 @@ public class InputManager : MonoBehaviour {
                         }
                     }
                 }
+                #endregion
             }
 
         }
@@ -192,5 +238,10 @@ public class InputManager : MonoBehaviour {
         }
         Destroy(goBackObject);
         trackingTouch = false;
+    }
+
+    private void UpdateInputParameters() {
+        Horizontal = (stick.transform.localPosition.x - stickOrigin.x) / stickMovementRadius;
+        Vertical = (stick.transform.localPosition.y - stickOrigin.y) / stickMovementRadius;
     }
 }

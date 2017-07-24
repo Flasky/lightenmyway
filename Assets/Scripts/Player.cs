@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
     public Rigidbody2D rb;
     private LevelController levelController;
     private HUDManager hudManager;
+    private InputManager inputManager;
     private float speed;
     private Animator animator;
 
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour {
 	void Awake () {
 		rb = GetComponent<Rigidbody2D>();
         levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
+        inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         sanity = maxSanity;
 
         transform.position = GameObject.Find("Start").gameObject.transform.position + new Vector3(0f, 0.4f, 0f);
@@ -71,7 +73,9 @@ public class Player : MonoBehaviour {
 	void FixedUpdate () {
         //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, rb.velocity.y);
         if (receiveInput) {
-            rb.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * speed, CrossPlatformInputManager.GetAxis("Vertical") * speed);
+
+            // rb.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * speed, CrossPlatformInputManager.GetAxis("Vertical") * speed);
+            rb.velocity = new Vector2(inputManager.Horizontal * speed, inputManager.Vertical * speed);
         }
 	}
 
