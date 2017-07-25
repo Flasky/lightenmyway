@@ -231,6 +231,11 @@ public class Player : MonoBehaviour {
         this.scapeGoat = scapeGoat;
     }
 
+    public void Win() {
+        receiveInput = false;
+        rb.velocity = Vector2.zero;
+    }
+
     public void Die() {
         if (scapeGoat != null) {
             Revive();
@@ -241,6 +246,7 @@ public class Player : MonoBehaviour {
 
     IEnumerator DieCoroutine() {
         receiveInput = false;
+        rb.velocity = Vector2.zero;
         died = true;
         audioSource.clip = audioClips[2];
         audioSource.loop = false;

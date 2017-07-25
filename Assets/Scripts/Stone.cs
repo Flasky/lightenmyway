@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrystalStone : MonoBehaviour {
+public class Stone : MonoBehaviour {
 
-	public void DestroyCrystalStone() {
+    public bool DestroyingSelf = false;
+
+	public void DestroyStone() {
+        DestroyingSelf = true;
         GetComponent<Animator>().SetTrigger("Destroy");
         StartCoroutine(DestroySelf());
     }

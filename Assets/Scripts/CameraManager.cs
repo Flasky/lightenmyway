@@ -21,6 +21,7 @@ public class CameraManager : MonoBehaviour {
         start = GameObject.Find("Start").gameObject;
         end = GameObject.Find("End").gameObject;
         ShouldFollowPlayer = true;
+
         if (SkipText != null) {
             SkipText.SetActive(false);
         }
@@ -71,7 +72,7 @@ public class CameraManager : MonoBehaviour {
             // move to the end
             direction = (end.transform.position - start.transform.position).normalized;
 
-            while ((transform.position.x - end.transform.position.x) < 0f) {
+            while ((transform.position.x - end.transform.position.x) < 0f && !animationCanceled) {
                 transform.Translate(direction * cameraMoveSpeed * cameraFrameTime);
                 yield return new WaitForSeconds(cameraFrameTime);
             }
@@ -81,13 +82,18 @@ public class CameraManager : MonoBehaviour {
 
             // move to the left
             direction = (start.transform.position - end.transform.position).normalized;
-            while ((transform.position.x - start.transform.position.x) > 0f) {
+            while ((transform.position.x - start.transform.position.x) > 0f && !animationCanceled) {
                 transform.Translate(direction * cameraMoveSpeed * cameraFrameTime);
                 yield return new WaitForSeconds(cameraFrameTime);
             }
 
-            EndAnimation();
+            if (!animationCanceled) {
+                EndAnimation();
+            }
         }
+
+        yield return new WaitForSeconds(0.2f);
+
 
     }
 
@@ -103,7 +109,6 @@ public class CameraManager : MonoBehaviour {
     private void ManualEndAnimation() {
         player.transform.position = start.transform.position + new Vector3(0f, 0.4f, 0f);
         StopCoroutine(PlayerToStartCoroutine());
-        StopCoroutine(MoveToEndCoroutine());
         animationCanceled = true;
         EndAnimation();
     }

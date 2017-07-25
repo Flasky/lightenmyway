@@ -22,6 +22,7 @@ public class Crack : MonoBehaviour {
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = crackSprites[stage - 1];
+        ChangeLight();
 
         cameraManager = Camera.main.GetComponent<CameraManager>();
 
@@ -55,6 +56,7 @@ public class Crack : MonoBehaviour {
 
     void OnTriggerExit2D (Collider2D colliderD) {
         if (colliderD.gameObject.tag == "Player") {
+            EnterNextStage();
             isPlayerHere = false;
         }
     }
@@ -71,7 +73,7 @@ public class Crack : MonoBehaviour {
                 ChangeLight();
                 // when the stage becomes 3
                 if (stage == 3) {
-                    if ((player.transform.position - this.transform.position).magnitude < 0.8f) {
+                    if ((player.transform.position - this.transform.position).magnitude < 0.4f) {
                         player.Die();
                     }
                 }

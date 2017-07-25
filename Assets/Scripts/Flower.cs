@@ -13,13 +13,14 @@ public class Flower : MonoBehaviour {
     public GameObject Filled;
 
     [SerializeField]
-    private int timeHit = 0;
+    private int timeHit;
     private Player player;
 
     void Start() {
         player = GameObject.Find("Player").gameObject.GetComponent<Player>();
         BigLight.SetActive(true);
         SmallLight.SetActive(false);
+        timeHit = 0;
     }
 
     void LateUpdate() {

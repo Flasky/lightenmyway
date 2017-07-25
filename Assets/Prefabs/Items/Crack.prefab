@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4415110135805072}
   - component: {fileID: 212997847448844928}
   - component: {fileID: 114726693657509038}
+  - component: {fileID: 60204771699795010}
   m_Layer: 0
   m_Name: Crack
   m_TagString: Untagged
@@ -158,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1179396359718108}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.02, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4428363614352558}
@@ -222,6 +223,68 @@ Transform:
   m_Father: {fileID: 4415110135805072}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60204771699795010
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1179396359718108}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.51, y: 1.51}
+    newSize: {x: 1.51, y: 1.51}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.33499998, y: -0.475}
+      - {x: 0.505, y: -0.585}
+      - {x: 0.505, y: -0.53499997}
+      - {x: 0.475, y: -0.415}
+      - {x: 0.545, y: -0.385}
+      - {x: 0.625, y: -0.155}
+      - {x: 0.645, y: -0.095}
+      - {x: 0.645, y: -0.074999996}
+      - {x: 0.525, y: 0.125}
+      - {x: 0.555, y: 0.235}
+      - {x: 0.575, y: 0.39499998}
+      - {x: 0.555, y: 0.415}
+      - {x: 0.525, y: 0.405}
+      - {x: 0.45499998, y: 0.255}
+      - {x: 0.345, y: 0.49499997}
+      - {x: 0.275, y: 0.59499997}
+      - {x: 0.195, y: 0.59499997}
+      - {x: -0.085, y: 0.515}
+      - {x: -0.16499999, y: 0.59499997}
+      - {x: -0.185, y: 0.59499997}
+      - {x: -0.285, y: 0.465}
+      - {x: -0.555, y: 0.525}
+      - {x: -0.585, y: 0.49499997}
+      - {x: -0.415, y: 0.355}
+      - {x: -0.45499998, y: 0.285}
+      - {x: -0.515, y: 0.095}
+      - {x: -0.60499996, y: 0.065}
+      - {x: -0.615, y: 0.035}
+      - {x: -0.585, y: -0.024999999}
+      - {x: -0.505, y: -0.085}
+      - {x: -0.49499997, y: -0.375}
+      - {x: -0.555, y: -0.445}
+      - {x: -0.565, y: -0.59499997}
+      - {x: -0.53499997, y: -0.60499996}
+      - {x: -0.505, y: -0.60499996}
+      - {x: -0.355, y: -0.48499998}
+      - {x: -0.16499999, y: -0.555}
+      - {x: -0.055, y: -0.555}
 --- !u!60 &60301764341671242
 PolygonCollider2D:
   m_ObjectHideFlags: 1

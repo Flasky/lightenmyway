@@ -107,6 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShouldFollowPlayer: 0
+  Joystick: {fileID: 0}
+  SkipText: {fileID: 0}
 --- !u!114 &114790296345986832
 MonoBehaviour:
   m_ObjectHideFlags: 1

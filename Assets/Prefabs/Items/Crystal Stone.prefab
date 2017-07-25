@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4935671203010510}
   - component: {fileID: 212791265834105708}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114118168764132960}
   - component: {fileID: 60546931489100362}
   - component: {fileID: 212882888160006874}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Crystal Stone
   m_TagString: Crystal Stone
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4203850585369164}
   - component: {fileID: 108622616276039406}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Smaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4271492232144538}
   - component: {fileID: 108607481866124372}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Larger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4475371631934328}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Light
   m_TagString: Light
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1093350645444706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.51, y: 3.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4935671203010510}
@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15261e1e5b1f84830996c68c418b3d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyingSelf: 0
 --- !u!212 &212791265834105708
 SpriteRenderer:
   m_ObjectHideFlags: 1

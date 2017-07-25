@@ -64,6 +64,7 @@ public class LevelController : MonoBehaviour {
     }
 
     public void Win() {
+        player.Win();
         winCanvas.SetActive(true);
         Time.timeScale = 0f;
     }
