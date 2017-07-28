@@ -1543,6 +1543,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d92d127f7c54c47daad22ee7d34162db, type: 3}
   - {fileID: 21300000, guid: d930131bbee644c12962bdc95982bdca, type: 3}
   - {fileID: 21300000, guid: 377eb5bec3ce1450f8b2ff7677605030, type: 3}
+  SkipText: {fileID: 114997413310205546}
+  PauseText: {fileID: 0}
+  RestartText: {fileID: 0}
+  SelectLevelText: {fileID: 0}
+  WinText: {fileID: 0}
+  LoseText: {fileID: 0}
 --- !u!114 &114801891914792684
 MonoBehaviour:
   m_ObjectHideFlags: 1

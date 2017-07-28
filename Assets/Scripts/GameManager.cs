@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour {
 
     public AudioClip menuBGM;
     public AudioClip levelBGM;
+    public Language.LanguageEnum languageEnum = Language.LanguageEnum.EN;
+    public Language language;
 
     private AudioSource audioSource;
 
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour {
 
         Application.targetFrameRate = 60;
         audioSource = GetComponent<AudioSource>();
+        language = new Language(languageEnum);
     }
 
 	public void StartGame() {

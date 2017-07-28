@@ -33,6 +33,18 @@ public class HUDManager : MonoBehaviour {
     public Sprite[] sanityIcons;
     public Sprite[] greySanityIcons;
 
+    // Language
+    public Text SkipText;
+
+    public Text PauseText;
+    public Text RestartText;
+    public Text SelectLevelText;
+
+    public Text WinText;
+    public Text LoseText;
+
+    private GameManager gameManager;
+
     void Start() {
         player = GameObject.Find("Player").GetComponent<Player>();
         audioSourceForLight = (AudioSource) GetComponents<AudioSource>()[0];
@@ -42,6 +54,7 @@ public class HUDManager : MonoBehaviour {
         audioSourceForBeating.loop = true;
 
         levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
+        gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
 
 		switch (levelController.chapterNo) {
             // chapter 0 is tutorial
@@ -69,6 +82,8 @@ public class HUDManager : MonoBehaviour {
 
         UpdateLightCountText(0);
         crystalIconPosition = crystalIcon.transform.position;
+
+        UpdateTextLanguage();
     }
 
     void Update() {
@@ -101,6 +116,32 @@ public class HUDManager : MonoBehaviour {
             scapegoatDollIcon.SetActive(false);
         }
 
+    }
+
+    public void UpdateTextLanguage() {
+        UpdateHUDLanguage();
+        UpdatePauseLanguage();
+        UpdateWinLanguage();
+        UpdateLoseLanguage();
+    }
+
+    public void UpdateHUDLanguage() {
+        SkipText.text = gameManager.language.LangDic["Skip Text"];
+
+    }
+
+    public void UpdatePauseLanguage() {
+        PauseText.text = gameManager.language.LangDic["Pause"];
+        RestartText.text = gameManager.language.LangDic["Restart"];
+        SelectLevelText.text = gameManager.language.LangDic["Select Level"];
+    }
+
+    public void UpdateWinLanguage() {
+        WinText.text = gameManager.language.LangDic["Level Clear"];
+    }
+
+    public void UpdateLoseLanguage() {
+        LoseText.text = gameManager.language.LangDic["Level Failed"];
     }
 
     private void ChangeSanityIcon (Sprite newIcon, Sprite newBackground) {
