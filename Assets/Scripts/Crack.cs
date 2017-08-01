@@ -34,7 +34,7 @@ public class Crack : MonoBehaviour {
             timeStoodThisStage += Time.deltaTime;
 
             if (timeStoodThisStage >= 1f && !hasShakenThisStage) {
-                cameraManager.Shake();
+                cameraManager.Shake(1);
                 hasShakenThisStage = true;
             }
 
@@ -71,6 +71,7 @@ public class Crack : MonoBehaviour {
                 hasShakenThisStage = false;
                 timeStoodThisStage = 0f;
                 ChangeLight();
+                cameraManager.Shake(5);
                 // when the stage becomes 3
                 if (stage == 3) {
                     if ((player.transform.position - this.transform.position).magnitude < 0.4f) {

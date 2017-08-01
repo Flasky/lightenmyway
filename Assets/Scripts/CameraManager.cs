@@ -113,7 +113,48 @@ public class CameraManager : MonoBehaviour {
         EndAnimation();
     }
 
-	public void Shake() {
-        Debug.Log("Camera Shaked");
+	public void Shake(int time) {
+        float shakeAngle = 0f; // Random.Range(0f, 360f); // clockwise from up right
+        float shakeDistance = 0.05f;
+        float shakeSpeed = 10f;
+        StartCoroutine(ShakeCoroutine(shakeAngle, shakeDistance, time));
+    }
+
+    IEnumerator ShakeCoroutine(float angle, float distance, int time) {
+        ShouldFollowPlayer = false;
+
+        float startTime = Time.time;
+        Vector3 direction;
+        Vector3 displacement;
+
+        // 1st shake
+        direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle), 0f);
+
+        displacement = direction * distance;
+        Debug.Log(direction + ", " + displacement);
+        transform.position = player.transform.position + displacement - new Vector3(0f, 0f, 10f);
+        yield return null;
+
+
+        startTime = Time.time;
+        direction *= -1f;
+
+        for (int i = 0; i < time; i++) {
+
+            displacement = direction * distance;
+            transform.position = player.transform.position + displacement - new Vector3(0f, 0f, 10f);
+            yield return null;
+
+            startTime = Time.time;
+            direction *= -1f;
+        }
+
+
+        displacement = direction * distance;
+        transform.position = player.transform.position + displacement - new Vector3(0f, 0f, 10f);
+        yield return null;
+
+
+        ShouldFollowPlayer = true;
     }
 }

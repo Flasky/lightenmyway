@@ -102,7 +102,6 @@ public class Player : MonoBehaviour {
 	void FixedUpdate () {
         //rb.velocity = new Vector2(Input.GetAxis("Horizontal") * maxSpeed, rb.velocity.y);
         if (receiveInput) {
-
             // rb.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * speed, CrossPlatformInputManager.GetAxis("Vertical") * speed);
             rb.velocity = new Vector2(inputManager.Horizontal * speed, inputManager.Vertical * speed);
         }
