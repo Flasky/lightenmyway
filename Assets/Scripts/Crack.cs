@@ -34,7 +34,6 @@ public class Crack : MonoBehaviour {
             timeStoodThisStage += Time.deltaTime;
 
             if (timeStoodThisStage >= 1f && !hasShakenThisStage) {
-                cameraManager.Shake(1);
                 hasShakenThisStage = true;
             }
 
@@ -71,7 +70,7 @@ public class Crack : MonoBehaviour {
                 hasShakenThisStage = false;
                 timeStoodThisStage = 0f;
                 ChangeLight();
-                cameraManager.Shake(5);
+                cameraManager.Shake(1);
                 // when the stage becomes 3
                 if (stage == 3) {
                     if ((player.transform.position - this.transform.position).magnitude < 0.4f) {
@@ -84,15 +83,12 @@ public class Crack : MonoBehaviour {
                 //TODO: shake visual effect and crack sound effect
             }
         }
-
-
     }
 
     IEnumerator ResetChangeStageBool() {
         yield return new WaitForSeconds(0.5f);
         justChangedStage = false;
     }
-
 
     private void ChangeLight() {
         switch (stage) {
