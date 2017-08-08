@@ -201,10 +201,11 @@ public class Player : MonoBehaviour {
         float stepTime = 0.015f;
         float duration = 0.5f;
         Color cyan = new Color(200f/255f, 1f, 1f, 1f);
+        float originalSpotAngle = smallLight.spotAngle;
         for (float time = 0f; time < duration; time += stepTime) {
             smallLight.color = Color.Lerp(cyan, Color.white, time/duration);
             largeLight.color = Color.Lerp(cyan, Color.white, time/duration);
-            smallLight.spotAngle = smallLight.spotAngle + (42f - smallLight.spotAngle) * stepTime;
+            smallLight.spotAngle = originalSpotAngle + (42f - originalSpotAngle) * time/duration;
             yield return new WaitForSeconds(stepTime);
         }
     }
@@ -329,10 +330,17 @@ public class Player : MonoBehaviour {
     }
 
     public void Die() {
-        if (scapeGoat != null) {
-            Revive();
+        if (levelController.levelNo == 0) {
+            transform.position = new Vector3(6.37f, 0.63f, 0f);
+            sanity = maxSanity;
+            lightShardCount = 5;
+            hudManager.UpdateLightCountText(lightShardCount);
         } else {
-            StartCoroutine(DieCoroutine());
+            if (scapeGoat != null) {
+                Revive();
+            } else {
+                StartCoroutine(DieCoroutine());
+            }
         }
     }
 

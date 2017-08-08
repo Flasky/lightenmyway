@@ -13,9 +13,8 @@ public class TutManager : MonoBehaviour{
     public GameObject end;
     public GameObject arrow;
     public GameObject tutPlace;
+    public GameObject zoomImage;
 
-    private bool showingImage1 = false;
-    private bool showingImage2 = false;
     private CameraManager cameraManager;
 
     void Start() {
@@ -31,7 +30,6 @@ public class TutManager : MonoBehaviour{
         menuBar.SetActive(false);
         joystick.SetActive(false);
         arrow.SetActive(false);
-        tutImages.SetActive(false);
         StartCoroutine(PlayerWalkToStartCoroutine());
         cameraManager.ShouldFollowPlayer = true;
     }
@@ -72,6 +70,18 @@ public class TutManager : MonoBehaviour{
         player.GetComponent<CapsuleCollider2D>().isTrigger = false;
         joystick.SetActive(true);
         cameraManager.ShouldFollowPlayer = true;
+        ShowTutImage1();
+    }
+
+    public void ShowTutImage1() {
+        Time.timeScale = 0.01f;
+        menuBar.SetActive(false);
+        tutImages.transform.FindChild("Image1").gameObject.SetActive(true);
+    }
+
+    public void ShowArrow() {
+        Time.timeScale = 1f;
+        tutImages.transform.FindChild("Image1").gameObject.SetActive(false);
         StartCoroutine(ArrowCoroutine());
     }
 
@@ -81,40 +91,69 @@ public class TutManager : MonoBehaviour{
         arrow.SetActive(false);
     }
 
-    public void Trigger1 () {
+    // trigger 1
+    public void ShowMenubar() {
         menuBar.SetActive(true);
     }
 
-    public void Trigger2 () {
+    // trigger 2
+    public void ShowTutImage2() {
         Time.timeScale = 0.01f;
+        tutImages.transform.FindChild("Image2").gameObject.SetActive(true);
         menuBar.SetActive(false);
-        tutImages.SetActive(true);
+    }
+
+    public void ShowTutImage3() {
         tutImages.transform.FindChild("Image2").gameObject.SetActive(false);
-        showingImage1 = true;
+        tutImages.transform.FindChild("Image3").gameObject.SetActive(true);
     }
 
-    public void Trigger4() {
-        StartCoroutine(Trigger4Coroutine());
+    public void CloseTutImage3() {
+        tutImages.transform.FindChild("Image3").gameObject.SetActive(false);
+        Time.timeScale = 1f;
+        menuBar.SetActive(true);
     }
 
-    IEnumerator Trigger4Coroutine() {
+    // trigger 3
+    public void ShowTutImage4() {
+        Time.timeScale = 0.01f;
+        tutImages.transform.FindChild("Image4").gameObject.SetActive(true);
+        menuBar.SetActive(false);
+    }
+
+    public void ShowTutImage5() {
+        tutImages.transform.FindChild("Image4").gameObject.SetActive(false);
+        tutImages.transform.FindChild("Image5").gameObject.SetActive(true);
+    }
+
+    public void CloseTutImage5() {
+        tutImages.transform.FindChild("Image5").gameObject.SetActive(false);
+        Time.timeScale = 1f;
+        menuBar.SetActive(true);
+        StartCoroutine(PlaceItemTutCoroutine());
+    }
+
+    public void ShowImage6() {
+        Time.timeScale = 0.01f;
+        tutImages.transform.FindChild("Image6").gameObject.SetActive(true);
+        menuBar.SetActive(false);
+    }
+
+    public void ShowImage5WhenShowing6() {
+        tutImages.transform.FindChild("Image6").gameObject.SetActive(false);
+        tutImages.transform.FindChild("Image5").gameObject.SetActive(true);
+    }
+    IEnumerator PlaceItemTutCoroutine() {
         tutPlace.SetActive(true);
         yield return new WaitForSeconds(3f);
         tutPlace.SetActive(false);
+
+        StartCoroutine(ShowZoomAnimationCoroutine());
     }
 
-    public void CrossButton() {
-
-        if (showingImage1) {
-            tutImages.transform.FindChild("Image1").gameObject.SetActive(false);
-            tutImages.transform.FindChild("Image2").gameObject.SetActive(true);
-            showingImage1 = false;
-            showingImage2 = true;
-        } else if (showingImage2) {
-            tutImages.SetActive(false);
-            menuBar.SetActive(true);
-            Time.timeScale = 1f;
-        }
-
+    IEnumerator ShowZoomAnimationCoroutine() {
+        zoomImage.SetActive(true);
+        yield return new WaitForSeconds(6f);
+        zoomImage.SetActive(false);
     }
 }

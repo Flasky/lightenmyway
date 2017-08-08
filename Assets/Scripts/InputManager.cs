@@ -190,6 +190,8 @@ public class InputManager : MonoBehaviour {
                                     player.UseLightShard();
                                 }
                             }
+                        } else {
+                            hit.collider.gameObject.GetComponent<Stone>().ShowQuestionMark();
                         }
                         break;
                     }
@@ -204,7 +206,7 @@ public class InputManager : MonoBehaviour {
                                 }
                             }
                         } else {
-
+                            hit.collider.gameObject.GetComponent<Stone>().ShowQuestionMark();
                         }
                         break;
                     }

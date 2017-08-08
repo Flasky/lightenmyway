@@ -14,7 +14,7 @@ public class VideoManager : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.S)) {
+        if (Input.GetKeyDown(KeyCode.S) || Input.touchCount > 2) {
             SceneManager.LoadScene("Select Menu");
         }
     }
