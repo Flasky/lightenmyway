@@ -44,7 +44,7 @@ public class CameraManager : MonoBehaviour {
             transform.position = player.transform.position + new Vector3(0f, 0f, -10f);
         }
 
-        if (Input.touchCount >= 1 && animating) {
+        if ((Input.touchCount >= 1 && animating) || Input.GetKeyDown(KeyCode.S)) {
             ManualEndAnimation();
         }
     }

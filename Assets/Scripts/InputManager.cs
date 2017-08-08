@@ -203,6 +203,8 @@ public class InputManager : MonoBehaviour {
                                     player.UseFlower();
                                 }
                             }
+                        } else {
+
                         }
                         break;
                     }
