@@ -10,9 +10,14 @@ public class HUDManager : MonoBehaviour {
     private AudioSource audioSourceForBeating;
     public AudioClip[] beatingClips;
 
+
+    // sanity
     public Slider sanitySlider;
     public GameObject sanitySliderBackground;
     public GameObject sanitySliderFill;
+    public GameObject[] redCorners;
+    private bool isSanityInMidRange = false;
+    private bool isSanityLow = false;
 
     public GameObject crystal;
     public Text crystalCountText;
@@ -21,7 +26,6 @@ public class HUDManager : MonoBehaviour {
     public AudioClip crystalPickUpSound;
     private Vector3 crystalIconPosition;
     private Vector3 lightShardPosition;
-
 
     public GameObject crystalFlower;
     public GameObject flowerCountIcon;
@@ -56,6 +60,7 @@ public class HUDManager : MonoBehaviour {
 
         levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
         gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+
         switch (gameManager.languageEnum) {
             case Language.LanguageEnum.ZH_CN:
                 LevelText.text = "- 第 " + levelController.levelNo + " 关 -";
@@ -92,6 +97,10 @@ public class HUDManager : MonoBehaviour {
                 break;
         }
 
+        foreach (GameObject go in redCorners) {
+            go.SetActive(false);
+        }
+
         UpdateLightCountText(0);
         crystalIconPosition = crystalIcon.transform.position;
 
@@ -102,12 +111,14 @@ public class HUDManager : MonoBehaviour {
         float sanityPercentage = player.GetSanityInPercentage();
         sanitySlider.value = sanityPercentage;
 
+        // 70-100
 		if (sanityPercentage >= 0.7f) {
 			ChangeSanityIcon(sanityIcons[0], greySanityIcons[0]);
             if (audioSourceForBeating.clip != beatingClips[0]) {
                 audioSourceForBeating.clip = beatingClips[0];
                 audioSourceForBeating.Play();
             }
+        // 30-70
         } else if (sanityPercentage >= 0.3f) {
             ChangeSanityIcon(sanityIcons[1], greySanityIcons[1]);
             if (player.IsSanityDropping) {
@@ -121,11 +132,27 @@ public class HUDManager : MonoBehaviour {
                     audioSourceForBeating.Play();
                 }
             }
+
+            if (!isSanityInMidRange) {
+                isSanityLow = false;
+                isSanityInMidRange = true;
+                redCorners[1].SetActive(false);
+                StopCoroutine(SanityLowCoroutine());
+                StartCoroutine(SanityMidRangeCoroutine());
+            }
+        // 0-30
         } else if (sanityPercentage >= 0) {
             ChangeSanityIcon(sanityIcons[2], greySanityIcons[2]);
             if (audioSourceForBeating.clip != beatingClips[2]) {
                 audioSourceForBeating.clip = beatingClips[2];
                 audioSourceForBeating.Play();
+            }
+            if (!isSanityLow) {
+                isSanityInMidRange = false;
+                isSanityLow = true;
+                redCorners[0].SetActive(false);
+                StopCoroutine(SanityMidRangeCoroutine());
+                StartCoroutine(SanityLowCoroutine());
             }
         }
 
@@ -245,5 +272,51 @@ public class HUDManager : MonoBehaviour {
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
+    }
+
+    IEnumerator SanityMidRangeCoroutine() {
+        float stepTime = 0.015f;
+        float duration = 0.3f;
+        Color transparent = new Color(1f, 1f, 1f, 0f);
+
+        redCorners[0].SetActive(true);
+        redCorners[0].GetComponent<Image>().color = transparent;
+
+        while (true) {
+            for (float time = 0f; time < duration; time += stepTime) {
+                redCorners[0].GetComponent<Image>().color = Color.Lerp(transparent, Color.white, time/duration);
+                yield return new WaitForSeconds(stepTime);
+            }
+
+            for (float time = 0f; time < duration; time += stepTime) {
+                redCorners[0].GetComponent<Image>().color = Color.Lerp(Color.white, transparent, time/duration);
+                yield return new WaitForSeconds(stepTime);
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    IEnumerator SanityLowCoroutine() {
+        float stepTime = 0.015f;
+        float duration = 0.2f;
+        Color transparent = new Color(1f, 1f, 1f, 0f);
+
+        redCorners[1].SetActive(true);
+        redCorners[1].GetComponent<Image>().color = transparent;
+
+        while (true) {
+            for (float time = 0f; time < duration; time += stepTime) {
+                redCorners[1].GetComponent<Image>().color = Color.Lerp(transparent, Color.white, time/duration);
+                yield return new WaitForSeconds(stepTime);
+            }
+
+            for (float time = 0f; time < duration; time += stepTime) {
+                redCorners[1].GetComponent<Image>().color = Color.Lerp(Color.white, transparent, time/duration);
+                yield return new WaitForSeconds(stepTime);
+            }
+
+            //yield return new WaitForSeconds(1f);
+        }
     }
 }
