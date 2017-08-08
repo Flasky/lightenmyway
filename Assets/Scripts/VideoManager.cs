@@ -13,6 +13,11 @@ public class VideoManager : MonoBehaviour {
         StartCoroutine(CheckStopCoroutine());
     }
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.S)) {
+            SceneManager.LoadScene("Select Menu");
+        }
+    }
     IEnumerator CheckStopCoroutine() {
         yield return new WaitForSeconds(50f);
         while (true) {

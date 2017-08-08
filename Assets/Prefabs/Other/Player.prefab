@@ -400,6 +400,7 @@ MonoBehaviour:
   sanityGainSpeed: 0.2
   IsSanityDropping: 0
   IsSanityIncreasing: 0
+  IsSanityStatic: 0
   smallLight: {fileID: 108663344367869442}
   largeLight: {fileID: 108497236740827254}
   isLit: 0

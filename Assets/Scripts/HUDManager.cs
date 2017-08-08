@@ -18,6 +18,7 @@ public class HUDManager : MonoBehaviour {
     public GameObject[] redCorners;
     private bool isSanityInMidRange = false;
     private bool isSanityLow = false;
+    public GameObject wavePrefab;
 
     public GameObject crystal;
     public Text crystalCountText;
@@ -105,6 +106,7 @@ public class HUDManager : MonoBehaviour {
         crystalIconPosition = crystalIcon.transform.position;
 
         UpdateTextLanguage();
+        StartCoroutine(SanityWaveCoroutine());
     }
 
     void Update() {
@@ -118,6 +120,14 @@ public class HUDManager : MonoBehaviour {
                 audioSourceForBeating.clip = beatingClips[0];
                 audioSourceForBeating.Play();
             }
+
+            isSanityLow = false;
+            isSanityInMidRange = false;
+            redCorners[0].SetActive(false);
+            redCorners[1].SetActive(false);
+            StopCoroutine(SanityLowCoroutine());
+            StopCoroutine(SanityMidRangeCoroutine());
+
         // 30-70
         } else if (sanityPercentage >= 0.3f) {
             ChangeSanityIcon(sanityIcons[1], greySanityIcons[1]);
@@ -317,6 +327,25 @@ public class HUDManager : MonoBehaviour {
             }
 
             //yield return new WaitForSeconds(1f);
+        }
+    }
+
+    IEnumerator SanityWaveCoroutine() {
+        while (true) {
+            if (player.IsSanityStatic) {
+                yield return new WaitForSeconds(Time.deltaTime);
+            } else {
+                GameObject wave = Instantiate(wavePrefab, sanitySlider.transform.Find("Waves")) as GameObject;
+                if (player.IsSanityDropping) {
+                    wave.GetComponent<Wave>().Initialize(Color.red);
+                }
+                else if (player.IsSanityIncreasing) {
+                    wave.GetComponent<Wave>().Initialize(new Color(0f, 244f/255f, 1f, 1f));
+                } else {
+                    Destroy(wave.gameObject);
+                }
+                yield return new WaitForSeconds(0.3f);
+            }
         }
     }
 }

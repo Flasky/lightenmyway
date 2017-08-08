@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
     private float lastFrameSanity;
     public bool IsSanityDropping = false;
     public bool IsSanityIncreasing = false;
+    public bool IsSanityStatic = false;
 
     // light
     public Light smallLight;
@@ -116,6 +117,7 @@ public class Player : MonoBehaviour {
 
     void LateUpdate() {
         if (sanity < lastFrameSanity) {
+            IsSanityStatic = false;
             if (!IsSanityDropping) {
                 IsSanityDropping = true;
                 StopCoroutine(SanityIncreaseCoroutine());
@@ -126,6 +128,7 @@ public class Player : MonoBehaviour {
         }
 
         if (sanity > lastFrameSanity) {
+            IsSanityStatic = false;
             // only do this when the sanity change from dropping to increasing
             if (!IsSanityIncreasing) {
                 IsSanityIncreasing = true;
@@ -134,6 +137,10 @@ public class Player : MonoBehaviour {
             }
         } else {
             IsSanityIncreasing = false;
+        }
+
+        if (sanity == lastFrameSanity) {
+            IsSanityStatic = true;
         }
 
         lastFrameSanity = sanity;
@@ -164,7 +171,6 @@ public class Player : MonoBehaviour {
         bool angleDecreasing = true;
 
         while (true) {
-            Debug.Log("Sanity increase coroutine");
             if (angleDecreasing) {
                 if (smallLight.spotAngle > smallSpotAngle) {
                     smallLight.spotAngle -= angleChangeSpeed * stepTime;
