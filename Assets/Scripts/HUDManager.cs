@@ -35,6 +35,7 @@ public class HUDManager : MonoBehaviour {
 
     // Language
     public Text SkipText;
+    public Text LevelText;
 
     public Text PauseText;
     public Text RestartText;
@@ -55,6 +56,17 @@ public class HUDManager : MonoBehaviour {
 
         levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
         gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        switch (gameManager.languageEnum) {
+            case Language.LanguageEnum.ZH_CN:
+                LevelText.text = "- 第 " + levelController.levelNo + " 关 -";
+                break;
+            case Language.LanguageEnum.ZH_HK:
+                LevelText.text = "- 第 " + levelController.levelNo + " 關 -";
+                break;
+            default:
+                LevelText.text = "- Level " + levelController.levelNo + " -";
+                break;
+        }
 
 		switch (levelController.chapterNo) {
             // chapter 0 is tutorial
@@ -98,9 +110,16 @@ public class HUDManager : MonoBehaviour {
             }
         } else if (sanityPercentage >= 0.3f) {
             ChangeSanityIcon(sanityIcons[1], greySanityIcons[1]);
-            if (audioSourceForBeating.clip != beatingClips[1]) {
-                audioSourceForBeating.clip = beatingClips[1];
-                audioSourceForBeating.Play();
+            if (player.IsSanityDropping) {
+                if (audioSourceForBeating.clip != beatingClips[2]) {
+                    audioSourceForBeating.clip = beatingClips[2];
+                    audioSourceForBeating.Play();
+                }
+            } else {
+                if (audioSourceForBeating.clip != beatingClips[1]) {
+                    audioSourceForBeating.clip = beatingClips[1];
+                    audioSourceForBeating.Play();
+                }
             }
         } else if (sanityPercentage >= 0) {
             ChangeSanityIcon(sanityIcons[2], greySanityIcons[2]);

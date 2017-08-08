@@ -1,22 +1,29 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour {
 
     [Range(0f, 10f)]
     public float maxSpeed;
 
+    // sanity
     public float maxSanity;
     public float sanity;
     [Tooltip("How many sanity lost per second")]
     public float sanityDropSpeed;
     public float sanityGainSpeed;
+    private float lastFrameSanity;
+    public bool IsSanityDropping = false;
+    public bool IsSanityIncreasing = false;
+
+    // light
+    public Light smallLight;
+    public Light largeLight;
 
     public bool isLit = false;
     public bool receiveInput = true;
 
-    //sound
+    // sound
     public AudioClip[] audioClips;
     private AudioSource audioSource;
     private bool playingNormalSound;
@@ -48,6 +55,7 @@ public class Player : MonoBehaviour {
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
 
         sanity = maxSanity;
+        lastFrameSanity = sanity;
 
         // transform.position = GameObject.Find("Start").gameObject.transform.position + new Vector3(0f, 0.4f, 0f);
         speed = maxSpeed;
@@ -96,7 +104,6 @@ public class Player : MonoBehaviour {
         }
 
         UpdateAnimationState();
-
     }
 
 	void FixedUpdate () {
@@ -107,12 +114,59 @@ public class Player : MonoBehaviour {
         }
 	}
 
+    void LateUpdate() {
+        if (sanity < lastFrameSanity) {
+            if (!IsSanityDropping) {
+                IsSanityDropping = true;
+                StopCoroutine(SanityIncreaseCoroutine());
+                StartCoroutine(SanityDropCoroutine());
+            }
+        } else {
+            IsSanityDropping = false;
+        }
+
+        if (sanity > lastFrameSanity) {
+            // only do this when the sanity change from dropping to increasing
+            if (!IsSanityIncreasing) {
+                IsSanityIncreasing = true;
+                StopCoroutine(SanityDropCoroutine());
+                StartCoroutine(SanityIncreaseCoroutine());
+            }
+        } else {
+            IsSanityIncreasing = false;
+        }
+
+        lastFrameSanity = sanity;
+    }
+
     void OnTriggerEnter2D (Collider2D collider) {
         if (collider.gameObject.tag == "LightShard") {
             StartCoroutine(LightsOutCoroutine());
         }
         if (collider.gameObject.tag == "End") {
             levelController.Win();
+        }
+    }
+
+    IEnumerator SanityIncreaseCoroutine() {
+        float stepTime = 0.015f;
+        float duration = 0.5f;
+        Color cyan = new Color(200f/255f, 1f, 1f, 1f);
+        for (float time = 0f; time < duration; time += stepTime) {
+            smallLight.color = Color.Lerp(Color.white, cyan, time/duration);
+            largeLight.color = Color.Lerp(Color.white, cyan, time/duration);
+            yield return new WaitForSeconds(stepTime);
+        }
+    }
+
+    IEnumerator SanityDropCoroutine() {
+        float stepTime = 0.015f;
+        float duration = 0.5f;
+        Color cyan = new Color(200f/255f, 1f, 1f, 1f);
+        for (float time = 0f; time < duration; time += stepTime) {
+            smallLight.color = Color.Lerp(cyan, Color.white, time/duration);
+            largeLight.color = Color.Lerp(cyan, Color.white, time/duration);
+            yield return new WaitForSeconds(stepTime);
         }
     }
 

@@ -15,6 +15,7 @@ public class Crack : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
     private CameraManager cameraManager;
     private Player player;
+    private AudioSource audioSource;
     private bool isPlayerHere = false;
     private bool justChangedStage = false;
 
@@ -27,6 +28,7 @@ public class Crack : MonoBehaviour {
         cameraManager = Camera.main.GetComponent<CameraManager>();
 
         player = GameObject.Find("Player").gameObject.GetComponent<Player>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -66,6 +68,7 @@ public class Crack : MonoBehaviour {
             StartCoroutine(ResetChangeStageBool());
             if (stage < 3) {
                 stage += 1;
+                audioSource.Play();
                 spriteRenderer.sprite = crackSprites[stage - 1];
                 hasShakenThisStage = false;
                 timeStoodThisStage = 0f;
