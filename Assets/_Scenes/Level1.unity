@@ -895,6 +895,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 108497236740827254, guid: ccb337c24d95e454382514350251b0d9,
+        type: 2}
+      propertyPath: m_SpotAngle
+      value: 54.40159
+      objectReference: {fileID: 0}
+    - target: {fileID: 108663344367869442, guid: ccb337c24d95e454382514350251b0d9,
+        type: 2}
+      propertyPath: m_SpotAngle
+      value: 42
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ccb337c24d95e454382514350251b0d9, type: 2}
   m_IsPrefabParent: 0

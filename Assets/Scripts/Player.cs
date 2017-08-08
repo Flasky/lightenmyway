@@ -157,6 +157,38 @@ public class Player : MonoBehaviour {
             largeLight.color = Color.Lerp(Color.white, cyan, time/duration);
             yield return new WaitForSeconds(stepTime);
         }
+
+        float normalSpotAngle = 42f;
+        float smallSpotAngle = 32f;
+        float angleChangeSpeed = 6.67f;
+        bool angleDecreasing = true;
+
+        while (true) {
+            Debug.Log("Sanity increase coroutine");
+            if (angleDecreasing) {
+                if (smallLight.spotAngle > smallSpotAngle) {
+                    smallLight.spotAngle -= angleChangeSpeed * stepTime;
+                    yield return new WaitForSeconds(stepTime);
+                } else {
+                    angleDecreasing = false;
+                    yield return new WaitForSeconds(stepTime);
+                }
+            } else if (!angleDecreasing) {
+                // angle increasing
+                if (smallLight.spotAngle < normalSpotAngle) {
+                    smallLight.spotAngle += angleChangeSpeed * stepTime;
+                    yield return new WaitForSeconds(stepTime);
+                } else {
+                    angleDecreasing = true;
+                    yield return new WaitForSeconds(stepTime);
+                }
+            }
+
+            if (IsSanityDropping) {
+                break;
+            }
+        }
+
     }
 
     IEnumerator SanityDropCoroutine() {
@@ -166,6 +198,7 @@ public class Player : MonoBehaviour {
         for (float time = 0f; time < duration; time += stepTime) {
             smallLight.color = Color.Lerp(cyan, Color.white, time/duration);
             largeLight.color = Color.Lerp(cyan, Color.white, time/duration);
+            smallLight.spotAngle = smallLight.spotAngle + (42f - smallLight.spotAngle) * stepTime;
             yield return new WaitForSeconds(stepTime);
         }
     }
