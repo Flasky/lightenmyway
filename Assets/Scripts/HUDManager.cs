@@ -64,13 +64,25 @@ public class HUDManager : MonoBehaviour {
 
         switch (gameManager.languageEnum) {
             case Language.LanguageEnum.ZH_CN:
-                LevelText.text = "- 第 " + levelController.levelNo + " 关 -";
+                if (levelController.levelNo == 0) {
+                    LevelText.text = "- 教学关 -";
+                } else {
+                    LevelText.text = "- 第 " + levelController.levelNo + " 关 -";
+                }
                 break;
             case Language.LanguageEnum.ZH_HK:
-                LevelText.text = "- 第 " + levelController.levelNo + " 關 -";
+                if (levelController.levelNo == 0) {
+                    LevelText.text = "- 教學關 -";
+                } else {
+                    LevelText.text = "- 第 " + levelController.levelNo + " 關 -";
+                }
                 break;
             default:
-                LevelText.text = "- Level " + levelController.levelNo + " -";
+                if (levelController.levelNo == 0) {
+                    LevelText.text = "- Tutorial -";
+                } else {
+                    LevelText.text = "- Level " + levelController.levelNo + " -";
+                }
                 break;
         }
 

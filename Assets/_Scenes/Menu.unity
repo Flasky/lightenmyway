@@ -5261,7 +5261,7 @@ Prefab:
     - target: {fileID: 114411815723190800, guid: 3feee506b96a94a55aaf1adac99ce307,
         type: 2}
       propertyPath: languageEnum
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3feee506b96a94a55aaf1adac99ce307, type: 2}

@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour {
 
@@ -65,6 +65,11 @@ public class LevelController : MonoBehaviour {
 
     public void Win() {
         player.Win();
+        StartCoroutine(WinCoroutine());
+    }
+
+    IEnumerator WinCoroutine() {
+        yield return new WaitForSeconds(3f);
         winCanvas.SetActive(true);
         Time.timeScale = 0f;
     }

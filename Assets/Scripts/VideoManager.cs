@@ -8,22 +8,20 @@ public class VideoManager : MonoBehaviour {
 	public VideoPlayer videoPlayer;
 
     void Awake() {
-        GameObject.Find("GameManager").GetComponent<AudioSource>().Pause();
         videoPlayer.Play();
         StartCoroutine(CheckStopCoroutine());
     }
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.S) || Input.touchCount > 2) {
-            SceneManager.LoadScene("Select Menu");
+            SceneManager.LoadScene("Menu");
         }
     }
     IEnumerator CheckStopCoroutine() {
         yield return new WaitForSeconds(50f);
         while (true) {
             if (!videoPlayer.isPlaying) {
-                GameObject.Find("GameManager").GetComponent<AudioSource>().Play();
-                SceneManager.LoadScene("Select Menu");
+                SceneManager.LoadScene("Menu");
             }
             yield return null;
         }

@@ -327,6 +327,7 @@ public class Player : MonoBehaviour {
     public void Win() {
         receiveInput = false;
         rb.velocity = Vector2.zero;
+        animator.SetTrigger("Win");
     }
 
     public void Die() {
@@ -348,6 +349,7 @@ public class Player : MonoBehaviour {
         receiveInput = false;
         rb.velocity = Vector2.zero;
         died = true;
+        animator.SetTrigger("Lose");
         audioSource.clip = audioClips[2];
         audioSource.loop = false;
         audioSource.Play();

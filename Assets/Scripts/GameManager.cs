@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
     }
 
 	public void StartGame() {
-        SceneManager.LoadScene("Video");
+        SceneManager.LoadScene("Select Menu");
     }
 
     public void LoadLevel(int level) {
