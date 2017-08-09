@@ -31,6 +31,10 @@ public class LevelController : MonoBehaviour {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
+    void Start() {
+        gameManager.gameObject.GetComponent<Options>().UpdateSFXVolume();
+    }
+
     void Update() {
 
         if (placingLight) {

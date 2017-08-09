@@ -62,29 +62,7 @@ public class HUDManager : MonoBehaviour {
         levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
         gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
 
-        switch (gameManager.languageEnum) {
-            case Language.LanguageEnum.ZH_CN:
-                if (levelController.levelNo == 0) {
-                    LevelText.text = "- 教学关 -";
-                } else {
-                    LevelText.text = "- 第 " + levelController.levelNo + " 关 -";
-                }
-                break;
-            case Language.LanguageEnum.ZH_HK:
-                if (levelController.levelNo == 0) {
-                    LevelText.text = "- 教學關 -";
-                } else {
-                    LevelText.text = "- 第 " + levelController.levelNo + " 關 -";
-                }
-                break;
-            default:
-                if (levelController.levelNo == 0) {
-                    LevelText.text = "- Tutorial -";
-                } else {
-                    LevelText.text = "- Level " + levelController.levelNo + " -";
-                }
-                break;
-        }
+
 
 		switch (levelController.chapterNo) {
             // chapter 0 is tutorial
@@ -191,6 +169,7 @@ public class HUDManager : MonoBehaviour {
         UpdatePauseLanguage();
         UpdateWinLanguage();
         UpdateLoseLanguage();
+        UpdateLevelNoLanguage();
     }
 
     public void UpdateHUDLanguage() {
@@ -210,6 +189,32 @@ public class HUDManager : MonoBehaviour {
 
     public void UpdateLoseLanguage() {
         LoseText.text = gameManager.language.LangDic["Level Failed"];
+    }
+
+    public void UpdateLevelNoLanguage() {
+        switch (gameManager.languageEnum) {
+            case Language.LanguageEnum.ZH_CN:
+                if (levelController.levelNo == 0) {
+                    LevelText.text = "- 教学关 -";
+                } else {
+                    LevelText.text = "- 第 " + levelController.levelNo + " 关 -";
+                }
+                break;
+            case Language.LanguageEnum.ZH_HK:
+                if (levelController.levelNo == 0) {
+                    LevelText.text = "- 教學關 -";
+                } else {
+                    LevelText.text = "- 第 " + levelController.levelNo + " 關 -";
+                }
+                break;
+            default:
+                if (levelController.levelNo == 0) {
+                    LevelText.text = "- Tutorial -";
+                } else {
+                    LevelText.text = "- Level " + levelController.levelNo + " -";
+                }
+                break;
+        }
     }
 
     private void ChangeSanityIcon (Sprite newIcon, Sprite newBackground) {

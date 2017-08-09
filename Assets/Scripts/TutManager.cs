@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutManager : MonoBehaviour{
     private GameObject camera;
@@ -15,7 +16,18 @@ public class TutManager : MonoBehaviour{
     public GameObject tutPlace;
     public GameObject zoomImage;
 
+    // text
+    public Text Image1Text;
+    public Text Image2Text;
+    public Text Image3Text;
+    public Text Image4Text;
+    public Text Image5Text;
+    public Text Image6Text;
+
     private CameraManager cameraManager;
+    private GameManager gameManager;
+
+    private bool hasPlayerDiedInThisLevel = false;
 
     void Start() {
         camera = Camera.main.gameObject;
@@ -23,6 +35,7 @@ public class TutManager : MonoBehaviour{
         camera.transform.position = start.transform.position + new Vector3(0f, 0f, -10f);
 
         player = GameObject.Find("Player").GetComponent<Player>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         player.receiveInput = false;
         player.transform.position = playerPositions[0].position;
         player.GetComponent<CapsuleCollider2D>().isTrigger = true;
@@ -32,6 +45,7 @@ public class TutManager : MonoBehaviour{
         arrow.SetActive(false);
         StartCoroutine(PlayerWalkToStartCoroutine());
         cameraManager.ShouldFollowPlayer = true;
+        UpdateTutTextLanguage();
     }
 
     IEnumerator PlayerWalkToStartCoroutine() {
@@ -130,19 +144,23 @@ public class TutManager : MonoBehaviour{
         tutImages.transform.FindChild("Image5").gameObject.SetActive(false);
         Time.timeScale = 1f;
         menuBar.SetActive(true);
-        StartCoroutine(PlaceItemTutCoroutine());
+        if (!hasPlayerDiedInThisLevel) {
+            StartCoroutine(PlaceItemTutCoroutine());
+        }
     }
 
     public void ShowImage6() {
         Time.timeScale = 0.01f;
         tutImages.transform.FindChild("Image6").gameObject.SetActive(true);
         menuBar.SetActive(false);
+        hasPlayerDiedInThisLevel = true;
     }
 
     public void ShowImage5WhenShowing6() {
         tutImages.transform.FindChild("Image6").gameObject.SetActive(false);
         tutImages.transform.FindChild("Image5").gameObject.SetActive(true);
     }
+
     IEnumerator PlaceItemTutCoroutine() {
         tutPlace.SetActive(true);
         yield return new WaitForSeconds(3f);
@@ -155,5 +173,14 @@ public class TutManager : MonoBehaviour{
         zoomImage.SetActive(true);
         yield return new WaitForSeconds(6f);
         zoomImage.SetActive(false);
+    }
+
+    public void UpdateTutTextLanguage() {
+        Image1Text.text = gameManager.language.LangDic["Tut1"];
+        Image2Text.text = gameManager.language.LangDic["Tut2"];
+        Image3Text.text = gameManager.language.LangDic["Tut3"];
+        Image4Text.text = gameManager.language.LangDic["Tut4"];
+        Image5Text.text = gameManager.language.LangDic["Tut5"];
+        Image6Text.text = gameManager.language.LangDic["Tut3"];
     }
 }

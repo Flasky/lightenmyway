@@ -332,6 +332,7 @@ public class Player : MonoBehaviour {
 
     public void Die() {
         if (levelController.levelNo == 0) {
+            FindObjectOfType<TutManager>().GetComponent<TutManager>().ShowImage6();
             transform.position = new Vector3(6.37f, 0.63f, 0f);
             sanity = maxSanity;
             lightShardCount = 5;

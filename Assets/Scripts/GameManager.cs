@@ -67,6 +67,19 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void UpdateLanguage(Language.LanguageEnum languageEnum) {
+        this.languageEnum = languageEnum;
+        language.SwitchLanguage(languageEnum);
+
+        if (GameObject.Find("HUD Canvas") != null) {
+            GameObject.Find("HUD Canvas").GetComponent<HUDManager>().UpdateTextLanguage();
+        }
+
+        if (GameObject.Find("TutManager") != null) {
+            GameObject.Find("TutManager").GetComponent<TutManager>().UpdateTutTextLanguage();
+        }
+    }
+
 
 
 }

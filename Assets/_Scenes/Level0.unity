@@ -305,9 +305,46 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114738854809573378, guid: 1d42a414892664235a95a4c5a2966cc8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 1d42a414892664235a95a4c5a2966cc8, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &27324915 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114350468755545502, guid: 1d42a414892664235a95a4c5a2966cc8,
+    type: 2}
+  m_PrefabInternal: {fileID: 27324914}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &27324916 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114922365685874384, guid: 1d42a414892664235a95a4c5a2966cc8,
+    type: 2}
+  m_PrefabInternal: {fileID: 27324914}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &27324917 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114499727459100572, guid: 1d42a414892664235a95a4c5a2966cc8,
+    type: 2}
+  m_PrefabInternal: {fileID: 27324914}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &27324918 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114487786364552180, guid: 1d42a414892664235a95a4c5a2966cc8,
+    type: 2}
+  m_PrefabInternal: {fileID: 27324914}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &27324919 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114319458493404336, guid: 1d42a414892664235a95a4c5a2966cc8,
+    type: 2}
+  m_PrefabInternal: {fileID: 27324914}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &27324920 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114107388487853828, guid: 1d42a414892664235a95a4c5a2966cc8,
+    type: 2}
+  m_PrefabInternal: {fileID: 27324914}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &34264478
 Prefab:
   m_ObjectHideFlags: 0
@@ -1437,6 +1474,12 @@ MonoBehaviour:
   arrow: {fileID: 1750065102}
   tutPlace: {fileID: 143505728}
   zoomImage: {fileID: 1603369033}
+  Image1Text: {fileID: 27324920}
+  Image2Text: {fileID: 27324919}
+  Image3Text: {fileID: 27324918}
+  Image4Text: {fileID: 27324917}
+  Image5Text: {fileID: 27324916}
+  Image6Text: {fileID: 27324915}
 --- !u!4 &708723281
 Transform:
   m_ObjectHideFlags: 0
