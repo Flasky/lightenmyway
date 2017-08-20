@@ -10,10 +10,14 @@ public class LevelController : MonoBehaviour {
     public int lightShardCount;
     public int maxLightCount;
     public GameObject lightOnGround;
+    public WinLight winLight;
+    public bool HasWon = false;
 
     private Player player;
     private bool placingLight = false;
     private GameManager gameManager;
+    private CameraManager cameraManager;
+    private AudioSource audioSource;
 
     #region UI variables
     public GameObject winCanvas;
@@ -33,6 +37,8 @@ public class LevelController : MonoBehaviour {
 
     void Start() {
         gameManager.gameObject.GetComponent<Options>().UpdateSFXVolume();
+        cameraManager = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -68,13 +74,22 @@ public class LevelController : MonoBehaviour {
     }
 
     public void Win() {
-        player.Win();
-        StartCoroutine(WinCoroutine());
+        if (!HasWon) {
+            HasWon = true;
+            StartCoroutine(WinCoroutine());
+        }
     }
 
     IEnumerator WinCoroutine() {
-        yield return new WaitForSeconds(3f);
+        cameraManager.ZoomToPlayer(1f, 3f);
+        yield return new WaitForSeconds(1f); //TODO: this should be the duration of camera animation
+        player.Win();
+        audioSource.Play();
+        winLight.gameObject.SetActive(true);
+        winLight.LightUpWholeMaze();
+        yield return new WaitForSeconds(2f);
         winCanvas.SetActive(true);
+
         Time.timeScale = 0f;
     }
 

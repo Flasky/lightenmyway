@@ -6,6 +6,7 @@ public class PinchZoom : MonoBehaviour {
 
     public float maxSize = 11f;
     public float minSize = 3f;
+    private Player player;
 
     private Camera camera;
     private InputManager inputManager;
@@ -14,75 +15,77 @@ public class PinchZoom : MonoBehaviour {
     void Start() {
         camera = Camera.main;
         inputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     void Update() {
         // If there are more than two touches on the device...
+        if (player.receiveInput) {
+            if (Input.touchCount >= 2)
+            {
 
-        if (Input.touchCount >= 2)
-        {
+                Touch touchZero;
+                Touch touchOne;
 
-            Touch touchZero;
-            Touch touchOne;
-
-            // not tracking anything else
-            if (!inputManager.trackingTouch && !inputManager.trackingMovement) {
-                canZoomNow = true;
-                touchZero = Input.GetTouch(0);
-                touchOne = Input.GetTouch(1);
-            }
-
-            // tracking touch but not movement
-            if ((inputManager.trackingTouch && !inputManager.trackingMovement)
-                || (!inputManager.trackingTouch && inputManager.trackingMovement)){
-                Debug.Log(Input.touchCount);
-                if (Input.touchCount == 3) {
+                // not tracking anything else
+                if (!inputManager.trackingTouch && !inputManager.trackingMovement) {
                     canZoomNow = true;
-
-                    ArrayList availableTouches = new ArrayList();
-                    for (int i = 0; i < Input.touchCount; i++) {
-                        if (Input.GetTouch(i).fingerId != inputManager.trackedTouchID
-                        && Input.GetTouch(i).fingerId != inputManager.movementTouchID) {
-                            availableTouches.Add(Input.GetTouch(i));
-                        }
-                    }
-                    touchZero = (Touch) availableTouches[0];
-                    touchOne = (Touch) availableTouches[1];
+                    touchZero = Input.GetTouch(0);
+                    touchOne = Input.GetTouch(1);
                 }
-            }
 
-            if (inputManager.trackingTouch && inputManager.trackingMovement) {
-                if (Input.touchCount == 4) {
-                    canZoomNow = true;
-                    ArrayList availableTouches = new ArrayList();
-                    for (int i = 0; i < Input.touchCount; i++) {
-                        if (Input.GetTouch(i).fingerId != inputManager.trackedTouchID
+                // tracking touch but not movement
+                if ((inputManager.trackingTouch && !inputManager.trackingMovement)
+                || (!inputManager.trackingTouch && inputManager.trackingMovement)) {
+                    Debug.Log(Input.touchCount);
+                    if (Input.touchCount == 3) {
+                        canZoomNow = true;
+
+                        ArrayList availableTouches = new ArrayList();
+                        for (int i = 0; i < Input.touchCount; i++) {
+                            if (Input.GetTouch(i).fingerId != inputManager.trackedTouchID
                             && Input.GetTouch(i).fingerId != inputManager.movementTouchID) {
-                            availableTouches.Add(Input.GetTouch(i));
+                                availableTouches.Add(Input.GetTouch(i));
+                            }
                         }
+                        touchZero = (Touch) availableTouches[0];
+                        touchOne = (Touch) availableTouches[1];
                     }
-                    touchZero = (Touch) availableTouches[0];
-                    touchOne = (Touch) availableTouches[1];
                 }
-            }
 
-            if (canZoomNow) {
-                // Find the position in the previous frame of each touch.
-                Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-                Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+                if (inputManager.trackingTouch && inputManager.trackingMovement) {
+                    if (Input.touchCount == 4) {
+                        canZoomNow = true;
+                        ArrayList availableTouches = new ArrayList();
+                        for (int i = 0; i < Input.touchCount; i++) {
+                            if (Input.GetTouch(i).fingerId != inputManager.trackedTouchID
+                            && Input.GetTouch(i).fingerId != inputManager.movementTouchID) {
+                                availableTouches.Add(Input.GetTouch(i));
+                            }
+                        }
+                        touchZero = (Touch) availableTouches[0];
+                        touchOne = (Touch) availableTouches[1];
+                    }
+                }
 
-                // Find the magnitude of the vector (the distance) between the touches in each frame.
-                float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-                float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+                if (canZoomNow) {
+                    // Find the position in the previous frame of each touch.
+                    Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+                    Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
 
-                // Find the difference in the distances between each frame.
-                float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+                    // Find the magnitude of the vector (the distance) between the touches in each frame.
+                    float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+                    float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
 
-                // ... change the orthographic size based on the change in distance between the touches.
-                camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+                    // Find the difference in the distances between each frame.
+                    float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
 
-                // Make sure the orthographic size never drops below zero.
-                camera.orthographicSize = Mathf.Min(Mathf.Max(camera.orthographicSize, minSize), maxSize);
+                    // ... change the orthographic size based on the change in distance between the touches.
+                    camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+
+                    // Make sure the orthographic size never drops below zero.
+                    camera.orthographicSize = Mathf.Min(Mathf.Max(camera.orthographicSize, minSize), maxSize);
+                }
             }
         }
     }

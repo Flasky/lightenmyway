@@ -116,7 +116,6 @@ public class CameraManager : MonoBehaviour {
 	public void Shake(int time) {
         float shakeAngle = 0f; // Random.Range(0f, 360f); // clockwise from up right
         float shakeDistance = 0.05f;
-        float shakeSpeed = 10f;
         StartCoroutine(ShakeCoroutine(shakeAngle, shakeDistance, time));
     }
 
@@ -156,5 +155,22 @@ public class CameraManager : MonoBehaviour {
 
 
         ShouldFollowPlayer = true;
+    }
+
+    public void ZoomToPlayer(float duration, float targetOrthographicSize) {
+        StartCoroutine(ZoomToPlayerCoroutine(duration, targetOrthographicSize));
+    }
+
+    IEnumerator ZoomToPlayerCoroutine(float duration, float targetOrthographicSize) {
+        float stepTime = 0.015f;
+        float originalOrthographicSize = this.gameObject.GetComponent<Camera>().orthographicSize;
+        float startTime = Time.time;
+
+        while ((Time.time - startTime) < duration) {
+            this.gameObject.GetComponent<Camera>().orthographicSize =
+                originalOrthographicSize - (originalOrthographicSize - targetOrthographicSize) * ((Time.time - startTime)/duration); //2f is the smallest size
+            yield return new WaitForSeconds(stepTime);
+        }
+
     }
 }
