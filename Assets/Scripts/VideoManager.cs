@@ -13,7 +13,7 @@ public class VideoManager : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.S) || Input.touchCount > 2) {
+        if (Input.GetKeyDown(KeyCode.S) || Input.touchCount >= 1) {
             SceneManager.LoadScene("Menu");
         }
     }
