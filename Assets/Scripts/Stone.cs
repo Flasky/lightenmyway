@@ -6,10 +6,13 @@ public class Stone : MonoBehaviour {
 
     public bool DestroyingSelf = false;
     public GameObject questionMark;
+    public GameObject distanceMark;
     private bool showingQuestionMark = false;
+    private bool showingDistanceMark = false;
 
     void Start() {
         questionMark.SetActive(false);
+        distanceMark.SetActive(false);
     }
     void Update() {
         if (Input.GetKeyDown(KeyCode.T)) {
@@ -18,18 +21,28 @@ public class Stone : MonoBehaviour {
     }
 
     public void ShowQuestionMark() {
-        if (!showingQuestionMark) {
+        if (!showingQuestionMark && !showingDistanceMark) {
             showingQuestionMark = true;
-            StartCoroutine(QuestionMarkCoroutine());
+            StartCoroutine(ShowMarkCoroutine(questionMark, true, false));
         }
     }
 
-    IEnumerator QuestionMarkCoroutine() {
-        questionMark.SetActive(true);
+    public void ShowDistanceMark() {
+        if (!showingDistanceMark && !showingQuestionMark) {
+            showingDistanceMark = true;
+            StartCoroutine(ShowMarkCoroutine(distanceMark, false, true));
+        }
+    }
+
+    IEnumerator ShowMarkCoroutine(GameObject mark, bool shouldShowQuestionMark, bool shouldShowDistanceMark) {
+        mark.SetActive(true);
         List<SpriteRenderer> sprites = new List<SpriteRenderer>();
-        sprites.Add(questionMark.GetComponent<SpriteRenderer>());
-        sprites.Add(questionMark.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>());
-        sprites.Add(questionMark.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>());
+        sprites.Add(mark.GetComponent<SpriteRenderer>());
+        sprites.Add(mark.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>());
+
+        if (shouldShowQuestionMark) {
+            sprites.Add(mark.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>());
+        }
 
         float stepTime = 0.015f;
         float duration = 0.3f;
@@ -55,8 +68,14 @@ public class Stone : MonoBehaviour {
             yield return new WaitForSeconds(stepTime);
         }
 
-        questionMark.SetActive(false);
-        showingQuestionMark = false;
+        mark.SetActive(false);
+        if (shouldShowQuestionMark) {
+            showingQuestionMark = false;
+        }
+
+        if (shouldShowDistanceMark) {
+            showingDistanceMark = false;
+        }
     }
 
 	public void DestroyStone() {

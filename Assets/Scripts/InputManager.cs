@@ -183,30 +183,38 @@ public class InputManager : MonoBehaviour {
                             Vector2.up, 1000f, LayerMask.GetMask("Items"));
 
                     if (hit.collider != null && hit.collider.gameObject.tag == "Crystal Stone") {
-                        if (player.HasLightShard()) {
-                            if ((player.transform.position - hit.collider.gameObject.transform.position).magnitude < 2f) {
-                                if (!hit.collider.gameObject.GetComponent<Stone>().DestroyingSelf) {
-                                    hit.collider.gameObject.GetComponent<Stone>().DestroyStone();
-                                    player.UseLightShard();
-                                }
-                            }
+                        if ((player.transform.position - hit.collider.gameObject.transform.position).magnitude >= 2f) {
+                            hit.collider.gameObject.GetComponent<Stone>().ShowDistanceMark();
                         } else {
-                            hit.collider.gameObject.GetComponent<Stone>().ShowQuestionMark();
+                            if (player.HasLightShard()) {
+                                if ((player.transform.position - hit.collider.gameObject.transform.position).magnitude < 2f) {
+                                    if (!hit.collider.gameObject.GetComponent<Stone>().DestroyingSelf) {
+                                        hit.collider.gameObject.GetComponent<Stone>().DestroyStone();
+                                        player.UseLightShard();
+                                    }
+                                }
+                            } else {
+                                hit.collider.gameObject.GetComponent<Stone>().ShowQuestionMark();
+                            }
                         }
                         break;
                     }
 
                     // hit flower stone
                     if (hit.collider != null && hit.collider.gameObject.tag == "Flower Stone") {
-                        if (player.HasFlower()) {
-                            if ((player.transform.position - hit.collider.gameObject.transform.position).magnitude < 2f) {
-                                if (!hit.collider.gameObject.GetComponent<Stone>().DestroyingSelf) {
-                                    hit.collider.gameObject.GetComponent<Stone>().DestroyStone();
-                                    player.UseFlower();
-                                }
-                            }
+                        if ((player.transform.position - hit.collider.gameObject.transform.position).magnitude >= 2f) {
+                            hit.collider.gameObject.GetComponent<Stone>().ShowDistanceMark();
                         } else {
-                            hit.collider.gameObject.GetComponent<Stone>().ShowQuestionMark();
+                            if (player.HasFlower()) {
+                                if ((player.transform.position - hit.collider.gameObject.transform.position).magnitude < 2f) {
+                                    if (!hit.collider.gameObject.GetComponent<Stone>().DestroyingSelf) {
+                                        hit.collider.gameObject.GetComponent<Stone>().DestroyStone();
+                                        player.UseFlower();
+                                    }
+                                }
+                            } else {
+                                hit.collider.gameObject.GetComponent<Stone>().ShowQuestionMark();
+                            }
                         }
                         break;
                     }
