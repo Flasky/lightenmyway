@@ -19,7 +19,9 @@ public class Player : MonoBehaviour {
 
     // light
     public Light smallLight;
+    private float smallOriginalIntensity;
     public Light largeLight;
+    private float largeOriginalIntensity;
 
     public bool isLit = false;
     public bool receiveInput = true;
@@ -69,6 +71,9 @@ public class Player : MonoBehaviour {
         playerAnimationState = PlayerAnimationState.Standing;
 
         hudManager.UpdateFlowerCountText(flowerCount);
+
+        smallOriginalIntensity = smallLight.intensity;
+        largeOriginalIntensity = largeLight.intensity;
 	}
 
 	void Update() {
@@ -121,6 +126,10 @@ public class Player : MonoBehaviour {
         if (receiveInput) {
             // rb.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * speed, CrossPlatformInputManager.GetAxis("Vertical") * speed);
             rb.velocity = new Vector2(inputManager.Horizontal * speed, inputManager.Vertical * speed);
+        }
+
+        if (sanity/maxSanity < 0.7f) {
+            smallLight.intensity = smallOriginalIntensity * ((sanity / maxSanity) * 9f / 7f + 0.1f);
         }
     }
 

@@ -15,6 +15,14 @@ public class CameraManager : MonoBehaviour {
     private bool animating = false;
     private bool animationCanceled = false;
 
+    private GameObject tutObject;
+
+    void Awake() {
+        if (GameObject.Find("Level Specific Tut") != null) {
+            tutObject = GameObject.Find("Level Specific Tut");
+            tutObject.SetActive(false);
+        }
+    }
     void Start() {
         player = GameObject.Find("Player").gameObject.GetComponent<Player>();
         levelController = GameObject.Find("LevelController").gameObject.GetComponent<LevelController>();
@@ -104,6 +112,9 @@ public class CameraManager : MonoBehaviour {
         ShouldFollowPlayer = true;
         SkipText.SetActive(false);
         animating = false;
+
+        tutObject.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     private void ManualEndAnimation() {

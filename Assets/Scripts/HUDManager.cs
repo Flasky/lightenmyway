@@ -62,8 +62,6 @@ public class HUDManager : MonoBehaviour {
         levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
         gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
 
-
-
 		switch (levelController.chapterNo) {
             // chapter 0 is tutorial
             case 0:
