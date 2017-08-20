@@ -77,12 +77,21 @@ public class Player : MonoBehaviour {
             if (sanity > maxSanity) {
                 sanity = maxSanity;
             }
+
+            // speed
+            speed = maxSpeed;
         } else {
             sanity -= sanityDropSpeed * Time.deltaTime;
             if (sanity <= 0) {
                 if (!died) {
                     Die();
                 }
+            }
+
+            // speed
+            speed = sanity / maxSanity * maxSpeed;
+            if (speed < 0.3f * maxSpeed) {
+                speed = 0.3f * maxSpeed;
             }
         }
 
@@ -113,7 +122,7 @@ public class Player : MonoBehaviour {
             // rb.velocity = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") * speed, CrossPlatformInputManager.GetAxis("Vertical") * speed);
             rb.velocity = new Vector2(inputManager.Horizontal * speed, inputManager.Vertical * speed);
         }
-	}
+    }
 
     void LateUpdate() {
         if (sanity < lastFrameSanity) {
@@ -219,7 +228,6 @@ public class Player : MonoBehaviour {
     void OnTriggerStay2D(Collider2D collider) {
         if (collider.gameObject.tag == "Light") {
             isLit = true;
-            speed = maxSpeed;
         }
     }
 
@@ -269,7 +277,6 @@ public class Player : MonoBehaviour {
 
     public void LightsOut() {
         isLit = false;
-        speed = maxSpeed / 3f;
     }
 
     public float GetSanityInPercentage() {
