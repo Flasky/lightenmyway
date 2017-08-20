@@ -159,9 +159,6 @@ public class Player : MonoBehaviour {
         if (collider.gameObject.tag == "LightShard") {
             StartCoroutine(LightsOutCoroutine());
         }
-        if (collider.gameObject.tag == "End") {
-            levelController.Win();
-        }
     }
 
     IEnumerator SanityIncreaseCoroutine() {

@@ -76,7 +76,8 @@ public class Crack : MonoBehaviour {
                 cameraManager.Shake(1);
                 // when the stage becomes 3
                 if (stage == 3) {
-                    if ((player.transform.position - this.transform.position).magnitude < 0.4f) {
+                    Vector3 modifiedPlayersPosition = player.transform.position - new Vector3(0f, 1f, 0f);
+                    if ((modifiedPlayersPosition - this.transform.position).magnitude < 0.5f) {
                         player.Die();
                     }
                 }
