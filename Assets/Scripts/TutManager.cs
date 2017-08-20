@@ -165,7 +165,9 @@ public class TutManager : MonoBehaviour{
         tutPlace.SetActive(true);
         yield return new WaitForSeconds(3f);
         tutPlace.SetActive(false);
+    }
 
+    public void ShowZoomAnimation() {
         StartCoroutine(ShowZoomAnimationCoroutine());
     }
 
