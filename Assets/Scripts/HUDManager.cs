@@ -78,7 +78,7 @@ public class HUDManager : MonoBehaviour {
                 break;
             case 2:
                 // hide unused icons
-                // scapegoatDoll.SetActive(false);
+                scapegoatDoll.SetActive(false);
                 break;
             case 3:
                 // do nothing
