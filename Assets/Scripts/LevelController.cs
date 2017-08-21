@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour {
 
@@ -23,6 +24,7 @@ public class LevelController : MonoBehaviour {
     public GameObject winCanvas;
     public GameObject pauseCanvas;
     public GameObject loseCanvas;
+    public Text PauseLevelText;
     #endregion
 
     void Awake() {
@@ -66,6 +68,11 @@ public class LevelController : MonoBehaviour {
     public void Pause() {
         Time.timeScale = 0f;
         pauseCanvas.SetActive(true);
+        string str = levelNo.ToString();
+        if (levelNo < 10) {
+            str = "0" + str;
+        }
+        PauseLevelText.text = "Level " + str;
     }
 
     public void Resume() {
@@ -78,6 +85,8 @@ public class LevelController : MonoBehaviour {
             HasWon = true;
             StartCoroutine(WinCoroutine());
         }
+
+        gameManager.UpdateSaveDate(this.levelNo);
     }
 
     IEnumerator WinCoroutine() {

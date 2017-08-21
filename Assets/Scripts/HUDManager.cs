@@ -43,8 +43,6 @@ public class HUDManager : MonoBehaviour {
     public Text LevelText;
 
     public Text PauseText;
-    public Text RestartText;
-    public Text SelectLevelText;
 
     public Text WinText;
     public Text LoseText;
@@ -177,8 +175,6 @@ public class HUDManager : MonoBehaviour {
 
     public void UpdatePauseLanguage() {
         PauseText.text = gameManager.language.LangDic["Pause"];
-        RestartText.text = gameManager.language.LangDic["Restart"];
-        SelectLevelText.text = gameManager.language.LangDic["Select Level"];
     }
 
     public void UpdateWinLanguage() {
@@ -190,7 +186,7 @@ public class HUDManager : MonoBehaviour {
     }
 
     public void UpdateLevelNoLanguage() {
-        switch (gameManager.languageEnum) {
+        switch (gameManager.LanguageEnum) {
             case Language.LanguageEnum.ZH_CN:
                 if (levelController.levelNo == 0) {
                     LevelText.text = "- 教学关 -";

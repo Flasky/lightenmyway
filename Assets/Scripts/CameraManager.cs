@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour {
@@ -14,10 +15,14 @@ public class CameraManager : MonoBehaviour {
     private GameObject end;
     private bool animating = false;
     private bool animationCanceled = false;
+    private GameManager gameManager;
 
     private GameObject tutObject;
 
     void Awake() {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
+
         if (GameObject.Find("Level Specific Tut") != null) {
             tutObject = GameObject.Find("Level Specific Tut");
             tutObject.SetActive(false);
@@ -113,8 +118,14 @@ public class CameraManager : MonoBehaviour {
         SkipText.SetActive(false);
         animating = false;
 
-        tutObject.SetActive(true);
-        Time.timeScale = 0f;
+        if (tutObject != null) {
+            if (!gameManager.DisplayedLevelTutorials.Contains(levelController.levelNo)) {
+                tutObject.SetActive(true);
+                Time.timeScale = 0f;
+                gameManager.DisplayedLevelTutorials.Add(levelController.levelNo);
+            }
+        }
+
     }
 
     private void ManualEndAnimation() {

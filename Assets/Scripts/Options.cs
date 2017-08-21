@@ -11,14 +11,15 @@ public class Options : MonoBehaviour {
 
     void Start() {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        SFXVolume = 10f;
-        MusicVolume = 10f;
+        UpdateSFXVolume();
+        UpdateMusicVolume();
     }
 
     public float IncreaseSFXVolume() {
         SFXVolume += 1f;
         if (SFXVolume > 10f) SFXVolume = 10f;
         UpdateSFXVolume();
+        gameManager.UpdateOptions();
         return SFXVolume;
     }
 
@@ -26,6 +27,7 @@ public class Options : MonoBehaviour {
         SFXVolume -= 1f;
         if (SFXVolume < 0f) SFXVolume = 0f;
         UpdateSFXVolume();
+        gameManager.UpdateOptions();
         return SFXVolume;
     }
 
@@ -42,6 +44,7 @@ public class Options : MonoBehaviour {
         MusicVolume += 1f;
         if (MusicVolume > 10f) MusicVolume = 10f;
         UpdateMusicVolume();
+        gameManager.UpdateOptions();
         return MusicVolume;
     }
 
@@ -49,6 +52,7 @@ public class Options : MonoBehaviour {
         MusicVolume -= 1f;
         if (MusicVolume < 0f) MusicVolume = 0f;
         UpdateMusicVolume();
+        gameManager.UpdateOptions();
         return MusicVolume;
     }
 
@@ -59,5 +63,6 @@ public class Options : MonoBehaviour {
 
     public void UpdateLanguage(Language.LanguageEnum languageEnum) {
         gameManager.UpdateLanguage(languageEnum);
+        gameManager.UpdateOptions();
     }
 }

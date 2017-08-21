@@ -13,6 +13,11 @@ public class OptionButtons:MonoBehaviour {
         MusicVolumeText.text = options.MusicVolume.ToString();
     }
 
+    void OnEnable() {
+        if (SFXVolumeText != null) SFXVolumeText.text = options.SFXVolume.ToString();
+        if (MusicVolumeText != null) MusicVolumeText.text = options.MusicVolume.ToString();
+    }
+
     public void SFXLeftButton() {
         SFXVolumeText.text = options.DecreaseSFXVolume().ToString();
     }
@@ -40,8 +45,4 @@ public class OptionButtons:MonoBehaviour {
     public void SetLanguageToZHHK() {
         options.UpdateLanguage(Language.LanguageEnum.ZH_HK);
     }
-
-
-
-
 }
