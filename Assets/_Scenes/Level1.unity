@@ -2164,6 +2164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 989366136}
   - component: {fileID: 989366137}
+  - component: {fileID: 989366138}
   m_Layer: 0
   m_Name: bk_1st_Chapter
   m_TagString: Untagged
@@ -2224,6 +2225,24 @@ SpriteRenderer:
   m_Size: {x: 38.399998, y: 21.599998}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+--- !u!114 &989366138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 989366135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89cb127eddd543cd938783b3cb81640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectToSpawn: {fileID: 1259349901955874, guid: 6671046ed87fa47b38858eb51e6c9bac,
+    type: 2}
+  NoOfRows: 15
+  NoOfColumns: 26
+  HorizontalSpacing: 1.51
+  VerticalSpacing: 1.51
+  OriginPosition: {x: -18.445, y: 10.045}
 --- !u!1001 &1044915486
 Prefab:
   m_ObjectHideFlags: 0

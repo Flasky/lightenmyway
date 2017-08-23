@@ -142,8 +142,6 @@ public class GameManager : MonoBehaviour {
         foreach (int i in save.DisplayedLevelTutorials) {
             this.DisplayedLevelTutorials.Add(i);
         }
-        Debug.Log("Loaded array length: " + this.DisplayedLevelTutorials.Count);
-        Debug.Log("Loaded array: " + this.DisplayedLevelTutorials);
 
         LanguageEnum = save.LanguageEnum;
         options.SFXVolume = save.SFXVolume;

@@ -13,6 +13,7 @@ TagManager:
   - Crystal Stone
   - Rock
   - Flower Stone
+  - Cold Light
   layers:
   - Default
   - TransparentFX
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1195682505
+    locked: 0
+  - name: Background Blocker
+    uniqueID: 3414368491
     locked: 0
   - name: Tile
     uniqueID: 1291317163

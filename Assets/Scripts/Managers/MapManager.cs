@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/**
+    Use for randomizing levels, by only displaying one single level piece from a collection
+ */
+
 public class MapManager : MonoBehaviour {
 
     public GameObject[] randomLevelPieces;

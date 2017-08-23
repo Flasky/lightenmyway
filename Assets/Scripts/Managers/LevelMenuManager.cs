@@ -9,7 +9,6 @@ public class LevelMenuManager : MonoBehaviour{
     void Start() {
         int lastPassedLevel = GameObject.Find("GameManager").GetComponent<GameManager>().LastPassedLevel;
         InitializeLevelSelectMenu(lastPassedLevel);
-        Debug.Log("Last passed level: " + lastPassedLevel);
     }
     public void InitializeLevelSelectMenu(int lastPassedLevel) {
         InitializeLevelMaps(lastPassedLevel);
