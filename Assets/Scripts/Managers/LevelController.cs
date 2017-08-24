@@ -91,8 +91,8 @@ public class LevelController : MonoBehaviour {
 
     IEnumerator WinCoroutine() {
         cameraManager.ZoomToPlayer(1f, 3f);
-        yield return new WaitForSeconds(1f); //TODO: this should be the duration of camera animation
         player.Win();
+        yield return new WaitForSeconds(1f); //TODO: this should be the duration of camera animation
         audioSource.Play();
         winLight.gameObject.SetActive(true);
         winLight.LightUpWholeMaze();
