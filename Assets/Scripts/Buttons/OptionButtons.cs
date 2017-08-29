@@ -14,8 +14,15 @@ public class OptionButtons:MonoBehaviour {
     }
 
     void OnEnable() {
-        if (SFXVolumeText != null) SFXVolumeText.text = options.SFXVolume.ToString();
-        if (MusicVolumeText != null) MusicVolumeText.text = options.MusicVolume.ToString();
+        if (options == null) options = GameObject.Find("GameManager").GetComponent<Options>();
+
+        if (SFXVolumeText != null) {
+            SFXVolumeText.text = options.SFXVolume.ToString();
+        }
+
+        if (MusicVolumeText != null) {
+            MusicVolumeText.text = options.MusicVolume.ToString();
+        }
     }
 
     public void SFXLeftButton() {

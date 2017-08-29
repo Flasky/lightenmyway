@@ -68,11 +68,11 @@ public class LevelController : MonoBehaviour {
     public void Pause() {
         Time.timeScale = 0f;
         pauseCanvas.SetActive(true);
-        string str = levelNo.ToString();
+        string str = "";
         if (levelNo < 10) {
-            str = "0" + str;
+            str = "0" + levelNo.ToString();
         }
-        PauseLevelText.text = "Level " + str;
+        PauseLevelText.text = gameManager.language.LangDic["Level"] + str;
     }
 
     public void Resume() {

@@ -110,6 +110,13 @@ public class GameManager : MonoBehaviour {
             GameObject.Find("TutManager").GetComponent<TutManager>().UpdateTutTextLanguage();
         }
 
+        LanguageUpdater[] languageUpdaters = FindObjectsOfType<LanguageUpdater>();
+        foreach (LanguageUpdater languageUpdater in languageUpdaters) {
+            if (languageUpdater.gameObject.activeSelf) {
+                languageUpdater.UpdateTextLanguage();
+            }
+        }
+
     }
 
 

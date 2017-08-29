@@ -67,6 +67,9 @@ public class Language {
                 LangDic.Add("Tut crack", "小心这些裂缝！");
                 LangDic.Add("Tut doll1", "把玩偶放到脚边的安全地带");
                 LangDic.Add("Tut doll2", "角色会在玩偶的位置复活");
+
+                // other
+                LangDic.Add("Level", "关卡");
                 break;
 
             case LanguageEnum.ZH_HK:
@@ -124,6 +127,9 @@ public class Language {
                 LangDic.Add("Tut crack", "小心這些裂縫");
                 LangDic.Add("Tut doll1", "把玩偶放到腳邊的安全地帶");
                 LangDic.Add("Tut doll2", "角色會在玩偶的位置復活");
+
+                // other
+                LangDic.Add("Level", "關卡");
                 break;
 
             case LanguageEnum.EN:
@@ -181,6 +187,9 @@ public class Language {
                 LangDic.Add("Tut crack", "Be careful about those cracks！");
                 LangDic.Add("Tut doll1", "Put the doll on somewhere near and safe");
                 LangDic.Add("Tut doll2", "Character will revive on where the doll is");
+
+                // other
+                LangDic.Add("Level", "Level");
                 break;
         }
     }

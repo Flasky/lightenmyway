@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 224565731025621550}
   - component: {fileID: 222144458728418868}
   - component: {fileID: 114542796546256236}
+  - component: {fileID: 114098868607654554}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -173,6 +174,7 @@ GameObject:
   - component: {fileID: 224841532454222596}
   - component: {fileID: 222297636768941604}
   - component: {fileID: 114791854527172532}
+  - component: {fileID: 114575131198571820}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -258,6 +260,7 @@ GameObject:
   - component: {fileID: 224505372340898482}
   - component: {fileID: 222656582049794496}
   - component: {fileID: 114435058643699146}
+  - component: {fileID: 114361775819633268}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -345,6 +348,7 @@ GameObject:
   - component: {fileID: 224324281630019106}
   - component: {fileID: 222887925317707776}
   - component: {fileID: 114675455667800930}
+  - component: {fileID: 114654446941136432}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -575,6 +579,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114098868607654554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458376629010090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a4413e258e648f085f0af8efba41d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyString: Music
+  TargetText: {fileID: 0}
 --- !u!114 &114150832784636574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -775,6 +792,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114361775819633268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687146790069916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a4413e258e648f085f0af8efba41d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyString: SFX
+  TargetText: {fileID: 0}
 --- !u!114 &114400517487354070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1226,6 +1256,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114575131198571820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1465097844789320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a4413e258e648f085f0af8efba41d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyString: Option
+  TargetText: {fileID: 0}
 --- !u!114 &114617442776513326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1311,6 +1354,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114654446941136432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807438092269628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a4413e258e648f085f0af8efba41d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyString: Language
+  TargetText: {fileID: 0}
 --- !u!114 &114675455667800930
 MonoBehaviour:
   m_ObjectHideFlags: 1
