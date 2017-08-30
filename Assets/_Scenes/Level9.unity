@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 56316618}
   - component: {fileID: 56316620}
   - component: {fileID: 56316619}
+  - component: {fileID: 56316621}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -374,6 +375,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 56316617}
+--- !u!114 &56316621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 56316617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a4413e258e648f085f0af8efba41d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyString: Tut doll1
+  TargetText: {fileID: 0}
 --- !u!1 &67590190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,6 +2071,7 @@ GameObject:
   - component: {fileID: 391155287}
   - component: {fileID: 391155289}
   - component: {fileID: 391155288}
+  - component: {fileID: 391155290}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2124,6 +2139,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 391155286}
+--- !u!114 &391155290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 391155286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a4413e258e648f085f0af8efba41d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyString: Tut doll2
+  TargetText: {fileID: 0}
 --- !u!1001 &421877526
 Prefab:
   m_ObjectHideFlags: 0
@@ -8112,6 +8140,24 @@ GameObject:
   m_PrefabParentObject: {fileID: 1266822501697470, guid: 4d25e5a4d4b414cb88cc4cf0ffc1e3ac,
     type: 2}
   m_PrefabInternal: {fileID: 1784026175}
+--- !u!1 &1784026178 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1423812866818412, guid: 4d25e5a4d4b414cb88cc4cf0ffc1e3ac,
+    type: 2}
+  m_PrefabInternal: {fileID: 1784026175}
+--- !u!114 &1784026179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1784026178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a4413e258e648f085f0af8efba41d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyString: Tut crack
+  TargetText: {fileID: 0}
 --- !u!1001 &1792158511
 Prefab:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ public class EndTile : MonoBehaviour {
 
     void Update() {
         Vector3 modifiedPlayersPosition = player.transform.position - new Vector3(0f, 1f, 0f);
-        if ((modifiedPlayersPosition - this.transform.position).magnitude < 0.5f) {
+        if ((modifiedPlayersPosition - this.transform.position).magnitude < 0.7f) {
             levelController.Win();
         }
     }

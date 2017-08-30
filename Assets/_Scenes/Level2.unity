@@ -1238,6 +1238,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d25e5a4d4b414cb88cc4cf0ffc1e3ac, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &489574441 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1423812866818412, guid: 4d25e5a4d4b414cb88cc4cf0ffc1e3ac,
+    type: 2}
+  m_PrefabInternal: {fileID: 489574440}
+--- !u!114 &489574442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 489574441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5a4413e258e648f085f0af8efba41d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyString: Tut stone
+  TargetText: {fileID: 0}
 --- !u!1001 &504283000
 Prefab:
   m_ObjectHideFlags: 0
