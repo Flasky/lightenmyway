@@ -183,7 +183,8 @@ public class InputManager : MonoBehaviour {
                             Vector2.up, 1000f, LayerMask.GetMask("Items"));
 
                     if (hit.collider != null && hit.collider.gameObject.tag == "Crystal Stone") {
-                        if ((player.transform.position - hit.collider.gameObject.transform.position).magnitude >= 2f) {
+                        Vector3 modifiedPlayersPosition = player.transform.position - new Vector3(0f, 1f, 0f);
+                        if ((modifiedPlayersPosition - hit.collider.gameObject.transform.position).magnitude >= 2f) {
                             hit.collider.gameObject.GetComponent<Stone>().ShowDistanceMark();
                         } else {
                             if (player.HasLightShard()) {
@@ -202,7 +203,8 @@ public class InputManager : MonoBehaviour {
 
                     // hit flower stone
                     if (hit.collider != null && hit.collider.gameObject.tag == "Flower Stone") {
-                        if ((player.transform.position - hit.collider.gameObject.transform.position).magnitude >= 2f) {
+                        Vector3 modifiedPlayersPosition = player.transform.position - new Vector3(0f, 1f, 0f);
+                        if ((modifiedPlayersPosition - hit.collider.gameObject.transform.position).magnitude >= 2f) {
                             hit.collider.gameObject.GetComponent<Stone>().ShowDistanceMark();
                         } else {
                             if (player.HasFlower()) {
