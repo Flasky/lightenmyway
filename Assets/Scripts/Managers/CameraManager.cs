@@ -27,6 +27,8 @@ public class CameraManager : MonoBehaviour {
             tutObject = GameObject.Find("Level Specific Tut");
             tutObject.SetActive(false);
         }
+
+
     }
     void Start() {
         player = GameObject.Find("Player").gameObject.GetComponent<Player>();
@@ -34,6 +36,7 @@ public class CameraManager : MonoBehaviour {
         start = GameObject.Find("Start").gameObject;
         end = GameObject.Find("End").gameObject;
         ShouldFollowPlayer = true;
+        this.gameObject.GetComponent<Camera>().orthographicSize = 3f;
 
         if (SkipText != null) {
             SkipText.SetActive(false);
@@ -125,7 +128,7 @@ public class CameraManager : MonoBehaviour {
                 gameManager.DisplayedLevelTutorials.Add(levelController.levelNo);
             }
         }
-
+        StartCoroutine(ZoomCameraCoroutine(1f, 5f));
     }
 
     private void ManualEndAnimation() {
@@ -179,11 +182,12 @@ public class CameraManager : MonoBehaviour {
         ShouldFollowPlayer = true;
     }
 
+    // 1f, 3f
     public void ZoomToPlayer(float duration, float targetOrthographicSize) {
-        StartCoroutine(ZoomToPlayerCoroutine(duration, targetOrthographicSize));
+        StartCoroutine(ZoomCameraCoroutine(duration, targetOrthographicSize));
     }
 
-    IEnumerator ZoomToPlayerCoroutine(float duration, float targetOrthographicSize) {
+    IEnumerator ZoomCameraCoroutine(float duration, float targetOrthographicSize) {
         float stepTime = 0.015f;
         float originalOrthographicSize = this.gameObject.GetComponent<Camera>().orthographicSize;
         float startTime = Time.time;

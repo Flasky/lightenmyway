@@ -72,7 +72,7 @@ public class LevelController : MonoBehaviour {
         if (levelNo < 10) {
             str = "0" + levelNo.ToString();
         }
-        PauseLevelText.text = gameManager.language.LangDic["Level"] + str;
+        PauseLevelText.text = str;
     }
 
     public void Resume() {
@@ -83,6 +83,7 @@ public class LevelController : MonoBehaviour {
     public void Win() {
         if (!HasWon) {
             HasWon = true;
+            player.receiveInput = false;
             StartCoroutine(WinCoroutine());
         }
 

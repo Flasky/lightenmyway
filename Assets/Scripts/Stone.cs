@@ -16,7 +16,7 @@ public class Stone : MonoBehaviour {
     }
     void Update() {
         if (Input.GetKeyDown(KeyCode.T)) {
-            ShowQuestionMark();
+            ShowDistanceMark();
         }
     }
 
