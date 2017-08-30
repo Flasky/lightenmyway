@@ -1,0 +1,1374 @@
+fileFormatVersion: 2
+guid: 90401d0d9ec1d48aea2619f23ef38f29
+timeCreated: 1504129604
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: bk_2nd_Chapter_0
+    21300002: bk_2nd_Chapter_1
+    21300004: bk_2nd_Chapter_2
+    21300006: bk_2nd_Chapter_3
+    21300008: bk_2nd_Chapter_4
+    21300010: bk_2nd_Chapter_5
+    21300012: bk_2nd_Chapter_6
+    21300014: bk_2nd_Chapter_7
+    21300016: bk_2nd_Chapter_8
+    21300018: bk_2nd_Chapter_9
+    21300020: bk_2nd_Chapter_10
+    21300022: bk_2nd_Chapter_11
+    21300024: bk_2nd_Chapter_12
+    21300026: bk_2nd_Chapter_13
+    21300028: bk_2nd_Chapter_14
+    21300030: bk_2nd_Chapter_15
+    21300032: bk_2nd_Chapter_16
+    21300034: bk_2nd_Chapter_17
+    21300036: bk_2nd_Chapter_18
+    21300038: bk_2nd_Chapter_19
+    21300040: bk_2nd_Chapter_20
+    21300042: bk_2nd_Chapter_21
+    21300044: bk_2nd_Chapter_22
+    21300046: bk_2nd_Chapter_23
+    21300048: bk_2nd_Chapter_24
+    21300050: bk_2nd_Chapter_25
+    21300052: bk_2nd_Chapter_26
+    21300054: bk_2nd_Chapter_27
+    21300056: bk_2nd_Chapter_28
+    21300058: bk_2nd_Chapter_29
+    21300060: bk_2nd_Chapter_30
+    21300062: bk_2nd_Chapter_31
+    21300064: bk_2nd_Chapter_32
+    21300066: bk_2nd_Chapter_33
+    21300068: bk_2nd_Chapter_34
+    21300070: bk_2nd_Chapter_35
+    21300072: bk_2nd_Chapter_36
+    21300074: bk_2nd_Chapter_37
+    21300076: bk_2nd_Chapter_38
+    21300078: bk_2nd_Chapter_39
+    21300080: bk_2nd_Chapter_40
+    21300082: bk_2nd_Chapter_41
+    21300084: bk_2nd_Chapter_42
+    21300086: bk_2nd_Chapter_43
+    21300088: bk_2nd_Chapter_44
+    21300090: bk_2nd_Chapter_45
+    21300092: bk_2nd_Chapter_46
+    21300094: bk_2nd_Chapter_47
+    21300096: bk_2nd_Chapter_48
+    21300098: bk_2nd_Chapter_49
+    21300100: bk_2nd_Chapter_50
+    21300102: bk_2nd_Chapter_51
+    21300104: bk_2nd_Chapter_52
+    21300106: bk_2nd_Chapter_53
+    21300108: bk_2nd_Chapter_54
+    21300110: bk_2nd_Chapter_55
+    21300112: bk_2nd_Chapter_56
+    21300114: bk_2nd_Chapter_57
+    21300116: bk_2nd_Chapter_58
+    21300118: bk_2nd_Chapter_59
+    21300120: bk_2nd_Chapter_60
+    21300122: bk_2nd_Chapter_61
+    21300124: bk_2nd_Chapter_62
+    21300126: bk_2nd_Chapter_63
+    21300128: bk_2nd_Chapter_64
+    21300130: bk_2nd_Chapter_65
+    21300132: bk_2nd_Chapter_66
+    21300134: bk_2nd_Chapter_67
+    21300136: bk_2nd_Chapter_68
+    21300138: bk_2nd_Chapter_69
+    21300140: bk_2nd_Chapter_70
+    21300142: bk_2nd_Chapter_71
+    21300144: bk_2nd_Chapter_72
+    21300146: bk_2nd_Chapter_73
+    21300148: bk_2nd_Chapter_74
+    21300150: bk_2nd_Chapter_75
+    21300152: bk_2nd_Chapter_76
+    21300154: bk_2nd_Chapter_77
+    21300156: bk_2nd_Chapter_78
+    21300158: bk_2nd_Chapter_79
+    21300160: bk_2nd_Chapter_80
+    21300162: bk_2nd_Chapter_81
+    21300164: bk_2nd_Chapter_82
+    21300166: bk_2nd_Chapter_83
+    21300168: bk_2nd_Chapter_84
+    21300170: bk_2nd_Chapter_85
+    21300172: bk_2nd_Chapter_86
+    21300174: bk_2nd_Chapter_87
+    21300176: bk_2nd_Chapter_88
+    21300178: bk_2nd_Chapter_89
+    21300180: bk_2nd_Chapter_90
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 1024
+    textureFormat: 34
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_2
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_3
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_4
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_5
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_6
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_7
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_8
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_9
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_10
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_11
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_12
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 1872
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_14
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_15
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_16
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_17
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_18
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_19
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_20
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_21
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_22
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_23
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_24
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_25
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 1584
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_27
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_28
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_29
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_30
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_31
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_32
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_33
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_34
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_35
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_36
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_37
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_38
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 1296
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_40
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_41
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_42
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_43
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_44
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_45
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_46
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_47
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_48
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_49
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_50
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_51
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 1008
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_53
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_54
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_55
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_56
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_57
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_58
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_59
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_60
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_61
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_62
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_63
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_64
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 720
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_65
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_66
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_67
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_68
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_69
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_70
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_71
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_72
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_73
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_74
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_75
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_76
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_77
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 432
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_78
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_79
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_80
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_81
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_82
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_83
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_84
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_85
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_86
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_87
+      rect:
+        serializedVersion: 2
+        x: 2592
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_88
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_89
+      rect:
+        serializedVersion: 2
+        x: 3168
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bk_2nd_Chapter_90
+      rect:
+        serializedVersion: 2
+        x: 3456
+        y: 144
+        width: 288
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
