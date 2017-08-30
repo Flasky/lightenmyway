@@ -78,6 +78,11 @@ public class LevelMenuManager : MonoBehaviour{
             LevelConnects[i].SetActive(true);
         }
 
+        if (lastDisplayedLevel >= 1) {
+            LevelConnects[24].SetActive(true);
+            LevelConnects[25].SetActive(true);
+        }
+
     }
 
 }

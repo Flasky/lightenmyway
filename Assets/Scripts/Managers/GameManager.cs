@@ -117,6 +117,10 @@ public class GameManager : MonoBehaviour {
             }
         }
 
+        if (SceneManager.GetActiveScene().name == "Menu") {
+            FindObjectOfType<TitleImageLanguageUpdater>().UpdateImage();
+        }
+
     }
 
 

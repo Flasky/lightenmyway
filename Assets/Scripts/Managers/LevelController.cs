@@ -86,7 +86,9 @@ public class LevelController : MonoBehaviour {
             StartCoroutine(WinCoroutine());
         }
 
-        gameManager.UpdateSaveDate(this.levelNo);
+        if (gameManager.LastPassedLevel < this.levelNo) {
+            gameManager.UpdateSaveDate(this.levelNo);
+        }
     }
 
     IEnumerator WinCoroutine() {
