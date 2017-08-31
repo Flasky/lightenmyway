@@ -7,6 +7,8 @@ public class EndTile : MonoBehaviour {
 
     public Sprite[] tileSprites;
     private SpriteRenderer spriteRenderer;
+    private LevelController levelController;
+    private Player player;
 
     void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -26,6 +28,16 @@ public class EndTile : MonoBehaviour {
             default:
                 Debug.LogError("End tile direction setting wrong");
                 break;
+        }
+
+        levelController = GameObject.Find("LevelController").GetComponent<LevelController>();
+        player = GameObject.Find("Player").GetComponent<Player>();
+    }
+
+    void Update() {
+        Vector3 modifiedPlayersPosition = player.transform.position - new Vector3(0f, 1f, 0f);
+        if ((modifiedPlayersPosition - this.transform.position).magnitude < 0.7f) {
+            levelController.Win();
         }
     }
 }

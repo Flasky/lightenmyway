@@ -14,10 +14,9 @@ public class Trigger2 : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.gameObject.tag == "Player") {
             if (!triggered) {
-                tutManager.Trigger2();
+                tutManager.ShowTutImage2();
                 triggered = true;
             }
         }
-
     }
 }

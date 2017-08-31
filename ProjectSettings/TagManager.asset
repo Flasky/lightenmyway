@@ -8,6 +8,12 @@ TagManager:
   - Light
   - Walkable
   - End
+  - Crack
+  - Flower
+  - Crystal Stone
+  - Rock
+  - Flower Stone
+  - Cold Light
   layers:
   - Default
   - TransparentFX
@@ -20,9 +26,9 @@ TagManager:
   - Player
   - Ground
   - Tile
-  - 
-  - 
-  - 
+  - Items
+  - Background
+  - Camera
   - 
   - 
   - 
@@ -48,6 +54,9 @@ TagManager:
   - name: Background
     uniqueID: 1195682505
     locked: 0
+  - name: Background Blocker
+    uniqueID: 3414368491
+    locked: 0
   - name: Tile
     uniqueID: 1291317163
     locked: 0
@@ -56,4 +65,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2123204545
+    locked: 0
+  - name: UI
+    uniqueID: 3763016065
     locked: 0

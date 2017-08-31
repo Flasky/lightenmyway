@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 60874690742395280}
   m_Layer: 0
   m_Name: Light 1.1
-  m_TagString: Untagged
+  m_TagString: Cold Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4062173232832830}
   - component: {fileID: 108635975859244450}
+  - component: {fileID: 114837511342795906}
   m_Layer: 0
   m_Name: Bigger
   m_TagString: Untagged
@@ -52,6 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4532145539322076}
   - component: {fileID: 108962688914265480}
+  - component: {fileID: 114064949504748392}
   m_Layer: 0
   m_Name: Smaller
   m_TagString: Untagged
@@ -97,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1970773639389088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.47, y: -0, z: 0}
+  m_LocalPosition: {x: -2.98, y: 3.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4247239376152812}
@@ -146,7 +148,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.58
+  m_Radius: 0.3
 --- !u!60 &60874690742395280
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -251,6 +253,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114064949504748392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1587928292546168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c13577e2e2014681ade84f0f6863bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114149471414375688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,6 +276,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightShardCount: 2
+--- !u!114 &114837511342795906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1508556336376532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c13577e2e2014681ade84f0f6863bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212631313717853324
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -293,7 +317,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -803095721
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8b2cd1f37e3f94cd3973a9aabcd206a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
