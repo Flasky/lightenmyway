@@ -90,12 +90,12 @@ public class TutManager : MonoBehaviour{
     public void ShowTutImage1() {
         Time.timeScale = 0.01f;
         menuBar.SetActive(false);
-        tutImages.transform.FindChild("Image1").gameObject.SetActive(true);
+        tutImages.transform.Find("Image1").gameObject.SetActive(true);
     }
 
     public void ShowArrow() {
         Time.timeScale = 1f;
-        tutImages.transform.FindChild("Image1").gameObject.SetActive(false);
+        tutImages.transform.Find("Image1").gameObject.SetActive(false);
         StartCoroutine(ArrowCoroutine());
     }
 
@@ -113,17 +113,17 @@ public class TutManager : MonoBehaviour{
     // trigger 2
     public void ShowTutImage2() {
         Time.timeScale = 0.01f;
-        tutImages.transform.FindChild("Image2").gameObject.SetActive(true);
+        tutImages.transform.Find("Image2").gameObject.SetActive(true);
         menuBar.SetActive(false);
     }
 
     public void ShowTutImage3() {
-        tutImages.transform.FindChild("Image2").gameObject.SetActive(false);
-        tutImages.transform.FindChild("Image3").gameObject.SetActive(true);
+        tutImages.transform.Find("Image2").gameObject.SetActive(false);
+        tutImages.transform.Find("Image3").gameObject.SetActive(true);
     }
 
     public void CloseTutImage3() {
-        tutImages.transform.FindChild("Image3").gameObject.SetActive(false);
+        tutImages.transform.Find("Image3").gameObject.SetActive(false);
         Time.timeScale = 1f;
         menuBar.SetActive(true);
     }
@@ -131,17 +131,17 @@ public class TutManager : MonoBehaviour{
     // trigger 3
     public void ShowTutImage4() {
         Time.timeScale = 0.01f;
-        tutImages.transform.FindChild("Image4").gameObject.SetActive(true);
+        tutImages.transform.Find("Image4").gameObject.SetActive(true);
         menuBar.SetActive(false);
     }
 
     public void ShowTutImage5() {
-        tutImages.transform.FindChild("Image4").gameObject.SetActive(false);
-        tutImages.transform.FindChild("Image5").gameObject.SetActive(true);
+        tutImages.transform.Find("Image4").gameObject.SetActive(false);
+        tutImages.transform.Find("Image5").gameObject.SetActive(true);
     }
 
     public void CloseTutImage5() {
-        tutImages.transform.FindChild("Image5").gameObject.SetActive(false);
+        tutImages.transform.Find("Image5").gameObject.SetActive(false);
         Time.timeScale = 1f;
         menuBar.SetActive(true);
         if (!hasPlayerDiedInThisLevel) {
@@ -151,14 +151,14 @@ public class TutManager : MonoBehaviour{
 
     public void ShowImage6() {
         Time.timeScale = 0.01f;
-        tutImages.transform.FindChild("Image6").gameObject.SetActive(true);
+        tutImages.transform.Find("Image6").gameObject.SetActive(true);
         menuBar.SetActive(false);
         hasPlayerDiedInThisLevel = true;
     }
 
     public void ShowImage5WhenShowing6() {
-        tutImages.transform.FindChild("Image6").gameObject.SetActive(false);
-        tutImages.transform.FindChild("Image5").gameObject.SetActive(true);
+        tutImages.transform.Find("Image6").gameObject.SetActive(false);
+        tutImages.transform.Find("Image5").gameObject.SetActive(true);
     }
 
     IEnumerator PlaceItemTutCoroutine() {
